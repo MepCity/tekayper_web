@@ -16,21 +16,7 @@
 /* ---------------------------------------------------------------- dünya */
 .sema { position: relative; }
 .bolum { position: relative; }
-.sema__izgara {
-  position: absolute;
-  z-index: 0;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 135vh;
-  pointer-events: none;
-  background-image:
-    linear-gradient(to right, rgba(62, 184, 235, 0.18) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(62, 184, 235, 0.18) 1px, transparent 1px);
-  background-size: 20px 20px;
-  -webkit-mask-image: linear-gradient(to bottom, #000 0, #000 55%, transparent 100%);
-  mask-image: linear-gradient(to bottom, #000 0, #000 55%, transparent 100%);
-}
+/* yapı ızgarası artık ortak katmanda (temel.css, gövde zemini): tek kâğıt, parallax düzlemi yok */
 
 /* ---------------------------------------------------------------- açılış */
 .giris { grid-column: 1 / span 5; padding: clamp(36px, 6.5vh, 72px) 0 clamp(28px, 4.5vh, 44px); }
@@ -312,7 +298,6 @@ ol.istasyonlar { margin-block: 0; padding: 0 var(--kenar); }
   .ist__sahne--q1 .sahne__foto { inset: 0; width: 100%; height: 100%; margin: 0; }
   .ist__sahne--q1 .aydinger { inset: 10% 18%; }
   .ist__sahne--q1 .aydinger__iz .sembol__cizim { width: 150px; height: 150px; }
-  .sema__izgara { height: 70vh; }
 
   .zirve--kamera .zirve__liste { left: 0; right: 0; }
   .notlar { grid-column: 1 / -1; padding-top: 56px; }

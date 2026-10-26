@@ -5,7 +5,7 @@
  *    yatay parçalar kalem geçince kendi uzunlukları boyunca çizilir (kaydırma ile geri sarılır);
  *  - sembolleri kalem sırasıyla bir kez çizer, istasyon metnini açar;
  *  - sarı enerji bandını son geçilen istasyona kadar akıtır (açık -Q1 ve açık -K1 ana kontağında bekler);
- *  - açılışta dört düzlemi ayrı hızlarda kaydırır ve -Q1'in aydınger kağıdını kaldırır;
+ *  - açılışta görsel, hat ve aydınger düzlemlerini ayrı hızlarda kaydırır ve -Q1'in aydınger kağıdını kaldırır;
  *  - E satırında föyü sabitler: kamera bütün föyü gösterir, devre sarıya boyanır, -K1 çeker, motor döner.
  * Azaltılmış harekette ve JS yokken sayfa son durumunda kalır (sabitleme yok, motor dönmez).
  */
@@ -238,7 +238,6 @@ function canli() {
   const q1Dugme = q1Li?.querySelector('.sahne--foto');
   const foto = q1Li?.querySelector('.sahne__foto');
   const kagit = q1Li?.querySelector('.aydinger');
-  const izgara = sema.querySelector('.sema__izgara');
   const acilis = { p: 0, kalk: 0, ek: null };
 
   function q1Ac() {
@@ -255,13 +254,12 @@ function canli() {
     const tel = telefonMu();
     const s = acilis.p;
     const S = acilis.S || 400;
-    // düzlem hızları (masaüstü): ızgara 0,35x, görsel 0,5x, hat ve yazı 1x, aydınger 1,15x
+    // düzlem hızları (masaüstü): görsel 0,5x, hat ve yazı 1x, aydınger 1,15x (ızgara kâğıtla birlikte kayar)
     const fotoY = tel ? 0 : -(S * 0.5) * (1 - s);
     const kagitY = tel ? 0 : fotoY - 0.15 * s * S;
     if (foto) foto.style.transform = `translate3d(0, ${fotoY.toFixed(1)}px, 0)`;
     kagit.style.transform = `translate3d(0, ${(kagitY - 28 * l).toFixed(1)}px, 0) rotate(${(-1.5 * l).toFixed(3)}deg)`;
     kagit.style.opacity = (0.78 - 0.66 * l).toFixed(3);
-    if (izgara) izgara.style.transform = tel ? '' : `translate3d(0, ${(0.65 * s * S).toFixed(1)}px, 0)`;
   }
 
   // elle: aydınger düğmesi ya da üzerine gelme. 1 = kaydırmanın değerine dön, 0 = indir.
@@ -294,7 +292,7 @@ function canli() {
       });
       acilis.S = st.end - st.start;
       kagitCiz();
-      return () => { [foto, kagit, izgara].forEach((el) => el && (el.style.transform = '')); };
+      return () => { [foto, kagit].forEach((el) => el && (el.style.transform = '')); };
     });
     mm.add('(max-width: 1023.98px)', () => {
       const sahne = q1Li.querySelector('.ist__sahne--q1');

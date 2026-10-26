@@ -12,7 +12,7 @@ html {
 body {
   margin: 0;
   min-height: 100dvh;
-  background: var(--zemin);
+  background-color: var(--zemin);
   color: var(--metin);
   font-family: var(--f-metin);
   font-size: var(--t-govde);
@@ -34,6 +34,39 @@ body {
 html[data-lenis] { scroll-behavior: auto; }
 @media (prefers-reduced-motion: no-preference) {
   html:not([data-lenis]) { scroll-behavior: smooth; }
+}
+
+/* yapı ızgarası: bütün föyün uzunluğunca TEK kâğıt. Gövde zemininde, sayfayla kayar (fixed katman yok,
+   background-attachment yok); çizgiler iç çerçevenin köşesinden başlar. Varsayılan güçlü (%18);
+   metin, tablo, form ve antet bölümleri aşağıdaki sisle yumuşar. */
+body {
+  background-image:
+    linear-gradient(to right, var(--izgara-cizgi) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--izgara-cizgi) 1px, transparent 1px);
+  background-size: var(--izgara-adim) var(--izgara-adim);
+  background-position: var(--c-sol) var(--c-ust);
+}
+
+/* iki yoğunluk (sıfır özgüllük: sayfa CSS'i kendi zeminini verirse o kazanır).
+   Her föy bölümü ve antet varsayılan olarak SİSLİ (ızgara ~%6,5, algılanır ama okumayı bozmaz).
+   Çizim bölgesi işareti, bölümün kendisine:  data-izgara="cizim"  (tam yoğunluk, %18)
+   Yumuşak geçiş (sert kesik yok): çizim bölgesinin sis ile komşu olduğu uca  ust  ve/veya  alt  eklenir:
+     data-izgara="cizim alt"   data-izgara="cizim ust alt"
+   Ardışık çizim bölgeleri arasında ek yazılmaz. Sisli bölümün içindeki sisli bölüm ikinci kez sislenmez. */
+:where(.foy [data-satir]:not([data-izgara]), .antet-bant) {
+  background-image: linear-gradient(var(--izgara-sis), var(--izgara-sis));
+}
+:where(.foy [data-satir]:not([data-izgara]) [data-satir]:not([data-izgara])) { background-image: none; }
+:where(.foy [data-izgara~="ust"]) {
+  background-image: linear-gradient(to bottom, var(--izgara-sis), transparent var(--izgara-kenar));
+}
+:where(.foy [data-izgara~="alt"]) {
+  background-image: linear-gradient(to top, var(--izgara-sis), transparent var(--izgara-kenar));
+}
+:where(.foy [data-izgara~="ust"][data-izgara~="alt"]) {
+  background-image:
+    linear-gradient(to bottom, var(--izgara-sis), transparent var(--izgara-kenar)),
+    linear-gradient(to top, var(--izgara-sis), transparent var(--izgara-kenar));
 }
 
 /* kağıt lifi dokusu: sabit, hareketsiz, %4 */

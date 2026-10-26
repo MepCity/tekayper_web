@@ -129,7 +129,7 @@ $sonucHtml = function () use ($metin, $r, $teklifUrl): string {
 ?>
 <main id="icerik" class="foy foy--sogutma" data-foy="5">
 
-  <section id="ic-dis" class="bant ic-dis" data-satir="A" data-sc-act="flow" aria-labelledby="ic-dis-baslik">
+  <section id="ic-dis" class="bant ic-dis" data-izgara="cizim" data-satir="A" data-sc-act="flow" aria-labelledby="ic-dis-baslik">
     <div class="izgara">
       <div class="ic-dis__bas">
         <?php partial('kesme-noktasi', ['ref' => '/3', 'sinif' => 'ic-dis__kesme']); ?>
@@ -206,7 +206,7 @@ $sonucHtml = function () use ($metin, $r, $teklifUrl): string {
     </div>
   </section>
 
-  <section id="hesap" class="bant hesap" data-satir="B" data-sc-act="flow" aria-labelledby="hesap-baslik">
+  <section id="hesap" class="bant hesap" data-izgara="cizim alt" data-satir="B" data-sc-act="flow" aria-labelledby="hesap-baslik">
     <div class="izgara">
       <div class="hesap__bas">
         <h2 id="hesap-baslik">Soğutma ihtiyacı</h2>

@@ -1,16 +1,11 @@
 /* sayfa-pano.css: Föy 5, Isı hesabı (paket P5). Bölünmüş sahne: bölme çizgisi pano yan duvarıdır. */
 
-.foy--sogutma { --duvar: var(--cz-kalin); --izgara-5mm: 18.8976px; }
+.foy--sogutma { --duvar: var(--cz-kalin); }
 .foy--sogutma .izgara > * { grid-column: 1 / -1; }
 
-/* yapı ızgarası (5 mm camgöbeği, %18): yalnızca pano içinde */
-.sahne__izgara, .teklif__izgara {
-  background-image:
-    linear-gradient(to right, rgba(62, 184, 235, 0.18) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(62, 184, 235, 0.18) 1px, transparent 1px);
-  background-size: var(--izgara-5mm) var(--izgara-5mm);
-  pointer-events: none;
-}
+/* yapı ızgarası artık bütün föyde ortak (temel.css). Pano sahnesi ve ısı hesabı çizim bölgesi (%18);
+   eski yerel ızgara katmanları çift çizgi vermesin diye kapalı. */
+.sahne__izgara, .teklif__izgara { display: none; }
 
 .sahne__ok, .c-ok { fill: currentColor; stroke: none; }
 .sahne__etiket, .c-yazi {
@@ -158,7 +153,6 @@ html.js[data-hareket="tam"] .sahne:not(.is-tpk) .sahne__tpk picture { clip-path:
 .cizim__olculer { --hucre-sutun: 3; margin-bottom: 16px; }
 .cizim__kutu { position: relative; }
 .cizim__svg { display: block; width: 100%; height: auto; max-width: none; color: var(--murekkep); overflow: visible; }
-.c-izgara { pointer-events: none; }
 .c-tara { stroke-width: 1px; }
 .c-yazi { font-size: 14px; }
 .c-olcek { font-size: 14px; }

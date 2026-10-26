@@ -81,7 +81,7 @@ $duseyler = function (string $bu) use ($cikislar): string {
     </div>
 
 <?php foreach ($cikislar as $k => $c): $dis = isset($c['dis']); ?>
-    <section id="<?= e($c['id']) ?>" class="cikis cikis--<?= $k ?><?= $dis ? ' cikis--dis' : '' ?>" data-satir="<?= e($c['harf']) ?>" data-cikis="<?= $k ?>" data-sc-act="flow" aria-labelledby="cikis-<?= $k ?>">
+    <section id="<?= e($c['id']) ?>" class="cikis cikis--<?= $k ?><?= $dis ? ' cikis--dis' : '' ?>" data-izgara="cizim<?= $k === array_key_last($cikislar) ? ' alt' : '' ?>" data-satir="<?= e($c['harf']) ?>" data-cikis="<?= $k ?>" data-sc-act="flow" aria-labelledby="cikis-<?= $k ?>">
       <?= $duseyler($k) ?>
       <span class="cikis__tel" aria-hidden="true"><i class="cikis__enerji"></i></span>
 <?php if ($k !== array_key_last($cikislar)): ?>

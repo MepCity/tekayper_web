@@ -60,7 +60,7 @@ partial('ust', ['foy' => $foy]);
 
   <div class="ekler-akis izgara" data-akis>
 
-    <section class="kapak" id="kapak" data-satir="A" data-sc-act="parallax" aria-labelledby="kapak-baslik">
+    <section class="kapak" id="kapak" data-izgara="cizim alt" data-satir="A" data-sc-act="parallax" aria-labelledby="kapak-baslik">
       <div class="kapak__metin">
         <h1 class="kapak__baslik" id="kapak-baslik">Kataloglar</h1>
         <p class="kapak__alt">Tekayper ürün kataloğu ve Armendus kataloğu, PDF olarak.</p>

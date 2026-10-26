@@ -106,6 +106,13 @@
   --c-ust: calc(var(--c-dis) + var(--cz-kalin) + var(--c-ust-satir) + var(--c-cetvel) + var(--cz-ince));
   --c-alt: calc(var(--c-dis) + var(--cz-kalin));
 
+  /* yapı ızgarası (5 mm camgöbeği çizgi; tek kâğıt, sayfayla birlikte kayar).
+     güçlü: çizim bölgeleri, %18. Metin, tablo, form ve antet altında kâğıt rengi sis: 0,18 x (1 - 0,6) = %7,2 */
+  --izgara-adim: 5mm;
+  --izgara-cizgi: rgba(62, 184, 235, 0.18);
+  --izgara-sis: rgba(241, 242, 238, 0.6);
+  --izgara-kenar: 120px;         /* iki yoğunluk arasındaki yumuşak geçişin yüksekliği */
+
   /* ızgara */
   --sutun: 8;
   --oluk: 24px;
@@ -163,4 +170,7 @@
   --plaka-metin: var(--ozalit);
   --plaka-uzeri: #DDE3E8;
   --odak: var(--kagit);
+  /* özalit: zemine uygun açık mavi çizgi, aynı iki yoğunluk (güçlü %14, sisli %4,8) */
+  --izgara-cizgi: rgba(168, 222, 246, 0.14);
+  --izgara-sis: rgba(22, 50, 74, 0.66);
 }

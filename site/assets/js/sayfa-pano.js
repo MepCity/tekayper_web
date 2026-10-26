@@ -338,10 +338,7 @@ function svgKur() {
   svg.setAttribute('viewBox', `0 0 ${w} ${h}`);
   svg.setAttribute('width', w);
   svg.setAttribute('height', h);
-  const defs = el('defs', {}, svg);
-  const desen = el('pattern', { id: 'c-izgara-desen', width: f(5 * PX_MM), height: f(5 * PX_MM), patternUnits: 'userSpaceOnUse' }, defs);
-  el('path', { d: `M${f(5 * PX_MM)} 0H0V${f(5 * PX_MM)}`, fill: 'none', stroke: '#3EB8EB', 'stroke-width': '1', opacity: '0.18' }, desen);
-  el('rect', { class: 'c-izgara', x: 0, y: 0, width: w, height: h, fill: 'url(#c-izgara-desen)' }, svg);
+  // yapı ızgarası çizim SVG'inde değil, föyün ortak zemininde (temel.css); burada yerel desen yok
   const g = el('g', { class: 'c-cizim' }, svg);
   const p = {
     w, h,

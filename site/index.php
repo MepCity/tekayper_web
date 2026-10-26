@@ -251,9 +251,8 @@ ob_start(fn ($h) => preg_replace_callback('~<svg\b.*?</svg>~s', fn ($m) => preg_
 ?>
 <main id="icerik" class="foy foy--ana" data-foy="1">
 <div class="sema" id="sema" data-sc-verify-state="">
-  <div class="sema__izgara" aria-hidden="true"></div>
 
-  <section id="giris" class="bolum bolum--giris izgara" data-satir="A" data-sc-act="parallax" aria-labelledby="giris-baslik">
+  <section id="giris" class="bolum bolum--giris izgara" data-izgara="cizim" data-satir="A" data-sc-act="parallax" aria-labelledby="giris-baslik">
     <div class="giris">
       <h1 class="giris__baslik" id="giris-baslik">Endüstriyel otomasyon malzemesi ve teknik destek, Bursa Nilüfer</h1>
       <p class="giris__alt"><?= marka_sayisi() ?> markanın <?= grup_sayisi() ?> ürün grubunu tedarik ediyoruz. Mühendislik, montaj ve servis hizmeti veriyoruz.</p>
@@ -261,7 +260,7 @@ ob_start(fn ($h) => preg_replace_callback('~<svg\b.*?</svg>~s', fn ($m) => preg_
     </div>
   </section>
 
-  <section id="besleme" class="bolum bolum--besleme" data-satir="B" data-sc-act="reveal" aria-labelledby="besleme-baslik">
+  <section id="besleme" class="bolum bolum--besleme" data-izgara="cizim" data-satir="B" data-sc-act="reveal" aria-labelledby="besleme-baslik">
     <h2 class="gizli" id="besleme-baslik">Besleme</h2>
     <ol class="istasyonlar izgara">
       <li class="ist ist--sebeke" id="ist-sebeke">
@@ -303,7 +302,7 @@ ob_start(fn ($h) => preg_replace_callback('~<svg\b.*?</svg>~s', fn ($m) => preg_
     </ol>
   </section>
 
-  <section id="kumanda" class="bolum bolum--kumanda" data-satir="C" data-sc-act="flow" aria-labelledby="kumanda-baslik">
+  <section id="kumanda" class="bolum bolum--kumanda" data-izgara="cizim" data-satir="C" data-sc-act="flow" aria-labelledby="kumanda-baslik">
     <div class="akis akis--baslik izgara">
       <div class="ist__cizim" aria-hidden="true">
         <?= $bant() ?>
@@ -464,7 +463,7 @@ $cikis = 'calc(var(--P) + var(--b) + 22px)';
     </ol>
   </section>
 
-  <section id="surucu" class="bolum bolum--surucu" data-satir="D" data-sc-act="scrub" aria-labelledby="surucu-baslik">
+  <section id="surucu" class="bolum bolum--surucu" data-izgara="cizim" data-satir="D" data-sc-act="scrub" aria-labelledby="surucu-baslik">
     <div class="akis akis--baslik izgara">
       <div class="ist__cizim" aria-hidden="true">
         <?= $bant() ?>
@@ -529,7 +528,7 @@ $k1tek = '<g class="sembol-g iec-kontaktor gk1" transform="translate(96 540)">'
     . '<path class="kontak__bicak" d="M24 32V11" transform="rotate(0 24 32)" data-mafsal="24 32" data-acik="-30" data-kapali="0" data-aci="0" vector-effect="non-scaling-stroke"/>'
     . '<path d="M9 22.5L13 18.5M10.5 25.5L14.5 21.5M12 28.5L16 24.5" vector-effect="non-scaling-stroke"/></g>';
 ?>
-  <section id="motor" class="bolum bolum--motor" data-satir="E" data-sc-act="pin" aria-labelledby="motor-baslik">
+  <section id="motor" class="bolum bolum--motor" data-izgara="cizim alt" data-satir="E" data-sc-act="pin" aria-labelledby="motor-baslik">
     <h2 class="gizli" id="motor-baslik">Motor</h2>
     <div class="zirve" data-sc-verify-state="">
       <svg class="genel" viewBox="0 0 640 1050" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.5" data-m1="120 974" data-kutu="20 8 600 1040">
