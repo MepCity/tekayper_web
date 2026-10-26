@@ -6,15 +6,6 @@ AddDefaultCharset UTF-8
 # Hata sayfası (site alt klasördeyse yolu ona göre değiştirin: /altklasor/404.php)
 ErrorDocument 404 /404.php
 
-# Eski adresler (PHP yönlendirme dosyaları da aynı işi yapar; burada sunucu düzeyinde, daha hızlı)
-<IfModule mod_alias.c>
-  RedirectPermanent /teknokol.php /urunler.php#armendus
-  RedirectPermanent /kol-sistemleri.php /urunler.php#armendus
-  RedirectPermanent /pano-sistemleri.php /urunler.php#armendus
-  RedirectPermanent /kiosk-sistemleri.php /urunler.php#armendus
-  RedirectPermanent /baglanti-kuleleri.php /urunler.php#armendus
-</IfModule>
-
 <IfModule mod_rewrite.c>
   RewriteEngine On
 
@@ -28,13 +19,23 @@ ErrorDocument 404 /404.php
   RewriteCond %{HTTP_HOST} ^tekayper\.com$ [NC]
   RewriteRule ^ https://www.tekayper.com%{REQUEST_URI} [L,R=301]
 
+  # Eski adresler (PHP yönlendirme dosyaları da aynı işi yapar; burada sunucu düzeyinde, daha hızlı).
+  # TKY_TABAN yalnızca önizleme imajında (docker/onizleme.conf) tanımlıdır: vekil arkasında Location'ın
+  # https://alanadi ile başlaması için. Canlıda boştur, hedef yol olarak kalır ve Apache onu kendi adresiyle tamamlar.
+  RewriteRule ^(teknokol|kol-sistemleri|pano-sistemleri|kiosk-sistemleri|baglanti-kuleleri)\.php$ %{ENV:TKY_TABAN}/urunler.php#armendus [NE,L,R=301]
+
   # /index.php -> / (yalnızca tarayıcı doğrudan istediğinde; DirectoryIndex iç isteği döngüye girmez)
   RewriteCond %{THE_REQUEST} ^[A-Z]+\s/index\.php[\s?] [NC]
-  RewriteRule ^index\.php$ / [L,R=301]
+  RewriteRule ^index\.php$ %{ENV:TKY_TABAN}/ [L,R=301]
 
   # eski form ucu: GET yönlendirilir, POST dosyanın kendisinde 410 alır
   RewriteCond %{REQUEST_METHOD} ^GET$
-  RewriteRule ^iletisimSmtp\.php$ /iletisim.php [L,R=301]
+  RewriteRule ^iletisimSmtp\.php$ %{ENV:TKY_TABAN}/iletisim.php [L,R=301]
+
+  # klasör adresine eğik çizgi ekleme (mod_dir, vekil arkasında iç portu sızdırır): yalnızca önizlemede biz yaparız
+  RewriteCond %{ENV:TKY_TABAN} .
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^(.+[^/])$ %{ENV:TKY_TABAN}/$1/ [L,R=301]
 
   # uygulama, kayıt, geliştirme ve araç klasörlerine doğrudan erişim yok
   RewriteRule ^(app|storage|tools|_dev)(/|$) - [F,L]
