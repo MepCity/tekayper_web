@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" class="iec iec-kontak-nc" data-sembol="kontak-nc" data-tur="iec" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" font-family="Osifont, ISOCPEUR, Arial, sans-serif" overflow="visible">
+  <title>Normalde kapalı kontak (açan kontak)</title>
+  <desc>IEC 60617 açan kontak, dikey. Sabit uç 24,16 noktasında sağa 10 birimlik oturma çizgisi, bıçak 30 derece sağa yaslanır.</desc>
+  <path d="M24 0V16H34" data-sira="1" vector-effect="non-scaling-stroke"/>
+  <path d="M24 48V32" data-sira="2" vector-effect="non-scaling-stroke"/>
+  <path class="kontak__bicak" d="M24 32V11" transform="rotate(30 24 32)" data-mafsal="24 32" data-acik="-12" data-kapali="30" data-aci="30" data-sira="3" vector-effect="non-scaling-stroke"/>
+  <text class="uc-no" data-uc="ust" x="21" y="8" text-anchor="end" font-size="6" data-sira="9"></text>
+  <text class="uc-no" data-uc="alt" x="21" y="46" text-anchor="end" font-size="6" data-sira="9"></text>
+  <g class="baglantilar" stroke="none">
+    <circle class="baglanti" cx="24" cy="0" r="0" data-baglanti="ust" data-uc="ust"/>
+    <circle class="baglanti" cx="24" cy="48" r="0" data-baglanti="alt" data-uc="alt"/>
+  </g>
+</svg>

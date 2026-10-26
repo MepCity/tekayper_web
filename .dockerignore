@@ -1,0 +1,24 @@
+# İmaja yalnızca site/ ve docker/ girer; geri kalan her şey dışarıda.
+.git
+.gitignore
+.DS_Store
+**/.DS_Store
+_kaynak
+_arastirma
+_qa
+_spec
+_scrollcraft
+.scrollcraft.json
+tools
+node_modules
+**/node_modules
+*.md
+render.yaml
+Dockerfile
+.dockerignore
+site/_dev
+site/app/config.local.php
+site/storage/anahtar.txt
+site/storage/eposta-log.txt
+site/storage/talepler
+site/storage/hiz

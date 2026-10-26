@@ -1,0 +1,90 @@
+# Tekayper: Apache ayarları. Sunucu nginx ise aynı kurallar tools/nginx-ornek.conf içinde.
+Options -Indexes
+DirectoryIndex index.php
+AddDefaultCharset UTF-8
+
+# Hata sayfası (site alt klasördeyse yolu ona göre değiştirin: /altklasor/404.php)
+ErrorDocument 404 /404.php
+
+# Eski adresler (PHP yönlendirme dosyaları da aynı işi yapar; burada sunucu düzeyinde, daha hızlı)
+<IfModule mod_alias.c>
+  RedirectPermanent /teknokol.php /urunler.php#armendus
+  RedirectPermanent /kol-sistemleri.php /urunler.php#armendus
+  RedirectPermanent /pano-sistemleri.php /urunler.php#armendus
+  RedirectPermanent /kiosk-sistemleri.php /urunler.php#armendus
+  RedirectPermanent /baglanti-kuleleri.php /urunler.php#armendus
+</IfModule>
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # HTTPS ve kanonik adres (www). Sertifika kurulu değilse bu iki bloğu kapatın.
+  # TKY_ONIZLEME yalnızca önizleme imajında (docker/onizleme.conf) tanımlıdır; canlıda koşul her zaman sağlanır.
+  RewriteCond %{ENV:TKY_ONIZLEME} !=1
+  RewriteCond %{HTTPS} !=on
+  RewriteCond %{HTTP:X-Forwarded-Proto} !=https
+  RewriteRule ^ https://www.tekayper.com%{REQUEST_URI} [L,R=301]
+  RewriteCond %{ENV:TKY_ONIZLEME} !=1
+  RewriteCond %{HTTP_HOST} ^tekayper\.com$ [NC]
+  RewriteRule ^ https://www.tekayper.com%{REQUEST_URI} [L,R=301]
+
+  # /index.php -> / (yalnızca tarayıcı doğrudan istediğinde; DirectoryIndex iç isteği döngüye girmez)
+  RewriteCond %{THE_REQUEST} ^[A-Z]+\s/index\.php[\s?] [NC]
+  RewriteRule ^index\.php$ / [L,R=301]
+
+  # eski form ucu: GET yönlendirilir, POST dosyanın kendisinde 410 alır
+  RewriteCond %{REQUEST_METHOD} ^GET$
+  RewriteRule ^iletisimSmtp\.php$ /iletisim.php [L,R=301]
+
+  # uygulama, kayıt, geliştirme ve araç klasörlerine doğrudan erişim yok
+  RewriteRule ^(app|storage|tools|_dev)(/|$) - [F,L]
+  RewriteRule (^|/)\. - [F,L]
+</IfModule>
+
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), interest-cohort=()"
+  Header always set Strict-Transport-Security "max-age=31536000" env=HTTPS
+  <FilesMatch "\.(woff2|avif|webp|jpg|jpeg|png|svg|ico|css|js|mp3|mp4)$">
+    Header set Cache-Control "public, max-age=2592000"
+  </FilesMatch>
+  <FilesMatch "\.pdf$">
+    Header set Cache-Control "public, max-age=604800"
+  </FilesMatch>
+</IfModule>
+
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType font/woff2 "access plus 30 days"
+  ExpiresByType image/avif "access plus 30 days"
+  ExpiresByType image/webp "access plus 30 days"
+  ExpiresByType image/jpeg "access plus 30 days"
+  ExpiresByType image/png "access plus 30 days"
+  ExpiresByType image/svg+xml "access plus 30 days"
+  ExpiresByType text/css "access plus 30 days"
+  ExpiresByType application/javascript "access plus 30 days"
+  ExpiresByType text/javascript "access plus 30 days"
+  ExpiresByType audio/mpeg "access plus 30 days"
+  ExpiresByType video/mp4 "access plus 30 days"
+</IfModule>
+
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/javascript application/javascript application/json image/svg+xml text/plain application/xml
+</IfModule>
+
+<IfModule mod_mime.c>
+  AddType font/woff2 .woff2
+  AddType image/avif .avif
+  AddType image/webp .webp
+  AddType image/svg+xml .svg
+  AddType text/javascript .js .mjs
+</IfModule>
+
+<FilesMatch "\.(md|json|lock|log|jsonl|sh|txt|ttf)$">
+  Require all denied
+</FilesMatch>
+<FilesMatch "^(robots\.txt|liste\.json)$">
+  Require all granted
+</FilesMatch>

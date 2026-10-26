@@ -1,0 +1,135 @@
+/* Form: antet hücresi biçiminde alanlar (ÇİZEN / KONTROL / ONAY gibi). Etiket üstte, hata altta. */
+
+.form-hucreler {
+  display: grid;
+  grid-template-columns: repeat(var(--hucre-sutun, 2), minmax(0, 1fr));
+  gap: var(--cz);
+  border: var(--cz) solid var(--cizgi-renk);
+  background: var(--cizgi-renk);
+}
+.form-hucreler > .hucre--genis, .form-hucreler > .hucre--textarea, .form-hucreler > .hucre--checkbox { grid-column: 1 / -1; }
+@media (max-width: 767.98px) { .form-hucreler { --hucre-sutun: 1; } }
+
+.hucre {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 6px 12px 10px;
+  border: var(--cz) solid var(--cizgi-renk);
+  background: var(--hucre-zemin);
+  transition: box-shadow var(--d-mikro) var(--e-ui);
+}
+.form-hucreler > .hucre { border: 0; }
+
+.hucre__etiket {
+  align-self: flex-start;
+  margin-left: -3px;
+  padding: 2px 3px 1px;
+  font-family: var(--f-cizim);
+  font-size: var(--t-xs);
+  letter-spacing: 0;
+  line-height: 1.15;
+  text-transform: uppercase;
+  color: var(--metin);
+  background: linear-gradient(var(--isaret), var(--isaret)) 0 0 / 0 100% no-repeat;
+  transition: background-size var(--d-mikro) var(--e-ui);
+}
+.hucre__zorunlu { font-family: var(--f-metin); }
+.hucre__deger {
+  display: block;
+  width: 100%;
+  min-height: 36px;
+  margin: 0;
+  padding: 6px 0 2px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: var(--metin);
+  font-family: var(--f-metin);
+  font-size: var(--t-md);
+  line-height: 1.4;
+  -webkit-appearance: none;
+  appearance: none;
+}
+textarea.hucre__deger { resize: vertical; min-height: 7.5em; }
+.hucre__deger:focus, .hucre__deger:focus-visible { outline: none; }
+.hucre__deger::placeholder { color: var(--metin-2); opacity: 1; }
+
+/* odak: hücre kenarı 2 px mürekkep, etiketin arkası işaret kalemi */
+.hucre:focus-within { box-shadow: inset 0 0 0 2px var(--odak); }
+.hucre:focus-within .hucre__etiket { background-size: 100% 100%; color: var(--murekkep); }
+[data-zemin="ozalit"] .hucre:focus-within .hucre__etiket { background-size: 0 100%; text-decoration: underline; }
+
+/* salt okunur (gönderildikten sonra kilitli hücre) */
+.hucre__deger[readonly] { cursor: default; }
+.hucre.is-kilitli { background: var(--zemin); }
+
+/* hata: kırmızı hücre kenarı, köşede revizyon üçgeni, cümle altta */
+.hucre__revizyon { display: none; }
+.hucre--hata { box-shadow: inset 0 0 0 1.5px var(--hata); }
+.hucre--hata:focus-within { box-shadow: inset 0 0 0 2px var(--hata); }
+.hucre--hata .hucre__revizyon {
+  display: block;
+  position: absolute;
+  top: 7px;
+  right: 9px;
+  width: 17px;
+  height: 15px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 17 15'%3E%3Cpath d='M8.5 1.2 15.8 14H1.2z' fill='none' stroke='%23B8281E' stroke-width='1.5'/%3E%3Cpath d='M8.5 5.5v4M8.5 10.8v1.2' stroke='%23B8281E' stroke-width='1.5'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+.hucre__hata { margin-top: 6px; font-size: var(--t-sm); line-height: 1.4; color: var(--hata); }
+.hucre__hata[hidden] { display: none; }
+.hucre__yardim { margin-top: 4px; font-size: var(--t-sm); line-height: 1.4; color: var(--metin-2); }
+[data-zemin="ozalit"] .hucre__hata { color: #FFB4AA; }
+
+/* onay kutusu: kare, çizim işareti */
+.hucre--checkbox {
+  display: grid;
+  grid-template-columns: 28px minmax(0, 1fr);
+  align-items: start;
+  column-gap: 12px;
+  padding-block: 14px;
+}
+.hucre--checkbox input {
+  width: 24px;
+  height: 24px;
+  margin: 1px 0 0;
+  border: var(--cz) solid var(--cizgi-renk);
+  border-radius: 0;
+  background: var(--zemin);
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+}
+.hucre--checkbox input:checked {
+  background: var(--murekkep) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M5.5 12.5 10 17l8.5-10' fill='none' stroke='%23F1F2EE' stroke-width='2'/%3E%3C/svg%3E") center / 20px no-repeat;
+}
+.hucre--checkbox input:focus-visible { outline: 2px solid var(--odak); outline-offset: 3px; }
+.hucre__onay { font-size: var(--t-sm); line-height: 1.5; cursor: pointer; }
+.hucre__onay a { text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: 0.18em; }
+.hucre--checkbox .hucre__hata { grid-column: 2; }
+.hucre--checkbox .hucre__revizyon { grid-column: auto; }
+.hucre--checkbox:focus-within { box-shadow: none; }
+.hucre--checkbox.hucre--hata { box-shadow: inset 0 0 0 1.5px var(--hata); }
+
+/* bal tuzağı: ekranda ve ekran okuyucuda yok, botlar doldurur */
+.bal { position: absolute; left: -10000px; top: auto; width: 1px; height: 1px; overflow: hidden; }
+
+/* formun üstündeki genel hata (sunucu hatası, süre doldu) */
+.form-uyari {
+  display: grid;
+  grid-template-columns: 20px minmax(0, 1fr);
+  gap: 10px;
+  padding: 12px 14px;
+  border: var(--cz) solid var(--hata);
+  background: var(--zemin);
+  color: var(--metin);
+  font-size: var(--t-sm);
+}
+.form-uyari::before {
+  content: "";
+  width: 17px; height: 15px; margin-top: 3px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 17 15'%3E%3Cpath d='M8.5 1.2 15.8 14H1.2z' fill='none' stroke='%23B8281E' stroke-width='1.5'/%3E%3Cpath d='M8.5 5.5v4M8.5 10.8v1.2' stroke='%23B8281E' stroke-width='1.5'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+.form-uyari[hidden] { display: none; }

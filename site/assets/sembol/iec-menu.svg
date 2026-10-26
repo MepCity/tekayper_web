@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" class="iec iec-menu" data-sembol="menu" data-tur="ui" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" font-family="Osifont, ISOCPEUR, Arial, sans-serif" overflow="visible">
+  <title>Föy listesi</title>
+  <desc>Föy listesi: üst üste paftalar ve antet köşesi.</desc>
+  <path d="M17 8H38V35" data-sira="1" vector-effect="non-scaling-stroke"/>
+  <path d="M11 13H33V41H11Z" data-sira="2" vector-effect="non-scaling-stroke"/>
+  <path d="M22 34H33M22 34V41" data-sira="3" vector-effect="non-scaling-stroke"/>
+</svg>

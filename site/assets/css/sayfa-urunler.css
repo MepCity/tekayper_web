@@ -1,0 +1,503 @@
+/* Föy 3, Ürün dağıtımı (paket P3). Tipografik afiş: bara, üç çıkış hattı, hatlara asılı dev satırlar.
+   Geometri: bütün çizgiler HTML öğeleridir (kenarlık değil, arka plan dolgusu); çizim ve enerji yalnızca
+   transform ve opacity ile canlanır. Sütun konumu üst cetvelle aynı ızgaradan hesaplanır. */
+
+.foy--urunler { display: block; }
+
+/* ---------------------------------------------------------------- geometri */
+.dagitim {
+  /* üst cetvelle aynı içerik kutusu: .izgara gibi en çok 1440 px, ortada, iki yanda kenar boşluğu */
+  --pad: max(var(--kenar), calc((100% - var(--sayfa-max)) / 2 + var(--kenar)));
+  --adim: calc((100% - 2 * var(--pad) + var(--oluk)) / var(--sutun));
+  /* çıkış sütunları (0 = 1. sütun). Ters merdiven: her alt hat bir sütun solda, böylece düşey hatlar yazıları kesmez */
+  --k-a: 3; --k-b: 2; --k-c: 1;
+  --x-a: calc(var(--pad) + var(--k-a) * var(--adim));
+  --x-b: calc(var(--pad) + var(--k-b) * var(--adim));
+  --x-c: calc(var(--pad) + var(--k-c) * var(--adim));
+  --dilim: 44px;                         /* sağ kenarda sonraki föyün kenarına ayrılan pay */
+  --cz-bara: var(--cz-kalin);
+  --cz-hat: var(--cz);
+  --bant: 7px;                           /* enerji bandı genişliği */
+  --t-afis: var(--t-4xl);
+  position: relative;
+  padding-top: clamp(1.25rem, 0.5rem + 1.6vw, 2.25rem);
+}
+
+/* ---------------------------------------------------------------- başlık ve bara */
+.dagitim__bas { position: relative; }
+.dagitim__h1 {
+  padding-inline: var(--pad);
+  margin-bottom: clamp(1rem, 0.6rem + 1vw, 1.5rem);
+}
+.bara {
+  position: relative;
+  height: 28px;
+}
+.bara__cizgi {
+  position: absolute;
+  left: calc(var(--pad) + 9px);
+  right: var(--pad);
+  bottom: 0;
+  height: var(--cz-bara);
+  background: var(--metin);
+  transform-origin: 0 50%;
+}
+/* bara ucu: kısa düşey kapak */
+.bara__cizgi::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: -5px;
+  width: var(--cz-bara);
+  height: 12px;
+  background: var(--metin);
+}
+.bara__giris {
+  position: absolute;
+  left: var(--pad);
+  bottom: calc(var(--cz-bara) / 2 - 22px);
+  display: flex;
+  align-items: center;
+  height: 44px;
+  min-width: 44px;
+  text-decoration: none;
+  color: var(--metin);
+}
+.bara__ok {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 9px;
+  height: 9px;
+  margin-top: -4.5px;
+  background: var(--metin);
+  clip-path: polygon(0 0, 100% 50%, 0 100%);
+}
+.bara__ref {
+  position: absolute;
+  left: 0;
+  bottom: calc(50% + 7px);
+  font-family: var(--f-cizim);
+  font-size: var(--t-not);
+  line-height: 1;
+  letter-spacing: 0;
+  white-space: nowrap;
+  padding-inline: 0.1em;
+  background: linear-gradient(var(--isaret), var(--isaret)) 0 72% / 0 0.46em no-repeat;
+  transition: background-size var(--d-normal) var(--e-vurgu);
+}
+@media (hover: hover) and (pointer: fine) { .bara__giris:hover .bara__ref { background-size: 100% 0.46em; } }
+.bara__giris:focus-visible { outline-offset: 0; background: none; }
+.bara__giris:focus-visible .bara__ref { background-size: 100% 0.46em; }
+
+/* T bağlantı noktası (IEC dolu nokta) */
+.bara__nokta, .cikis__nokta {
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  margin-left: -3.5px;
+  border-radius: 50%;
+  background: var(--metin);
+}
+.bara__nokta { bottom: calc(var(--cz-bara) / 2 - 3.5px); }
+.bara__nokta--a { left: calc(var(--x-a) + var(--cz-hat) / 2); }
+.bara__nokta--b { left: calc(var(--x-b) + var(--cz-hat) / 2); }
+.bara__nokta--c { left: calc(var(--x-c) + var(--cz-hat) / 2); }
+.cikis__nokta { display: none; }
+
+/* ---------------------------------------------------------------- çıkış hatları */
+.cikis {
+  --ara: clamp(2.5rem, 1.25rem + 3.6vh, 5rem);   /* bir önceki satırla bu hattın teli arasındaki boşluk */
+  position: relative;
+  padding-top: var(--ara);
+  padding-right: calc(var(--dilim) + var(--pad));
+}
+.cikis--a { --x: var(--x-a); --ara: clamp(2.25rem, 1rem + 3.2vh, 4rem); }
+.cikis--b { --x: var(--x-b); }
+.cikis--c { --x: var(--x-c); padding-bottom: 0; }
+
+/* düşey hat parçası: bölümün üstünden (bara ya da önceki bölüm) tele kadar iner ya da bölümü boydan geçer.
+   Mürekkep ::after ile çizilir; içindeki enerji bandı ağaç sırasında önce boyanır, böylece mürekkebin altında kalır. */
+.dusey {
+  position: absolute;
+  top: 0;
+  width: var(--cz-hat);
+  transform-origin: 50% 0;
+}
+.dusey::after, .cikis__tel::after, .cikis__cikan::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--metin);
+}
+.dusey--a { left: var(--x-a); }
+.dusey--b { left: var(--x-b); }
+.dusey--c { left: var(--x-c); }
+.dusey--biter { height: calc(var(--ara) + var(--cz-hat)); }
+.dusey--gecer { bottom: 0; }
+
+/* yatay tel: dönüşten föy kenarındaki kesme noktasına */
+.cikis__tel {
+  position: absolute;
+  top: var(--ara);
+  left: var(--x);
+  right: calc(var(--dilim) + 9px);
+  height: var(--cz-hat);
+  transform-origin: 0 50%;
+}
+
+/* enerji bandı: çizginin altında, sarı, multiply (cizim.css .hat-enerji ile aynı dil) */
+.dusey__enerji, .cikis__enerji {
+  position: absolute;
+  background: var(--isaret);
+  mix-blend-mode: multiply;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--d-mikro) var(--e-ui), transform 0s linear var(--d-mikro);
+}
+.dusey__enerji {
+  left: calc(50% - var(--bant) / 2);
+  width: var(--bant);
+  top: 0;
+  bottom: 0;
+  transform: scaleY(0);
+  transform-origin: 50% 0;
+}
+.cikis__enerji {
+  top: calc(50% - var(--bant) / 2);
+  height: var(--bant);
+  left: 0;
+  right: 0;
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+}
+/* satır: tele asılı dev yazı ve küçük açıklama */
+.cikis__govde { padding-left: var(--x); }
+.cikis__baslik {
+  margin: 0;
+  padding-top: 0.1em;
+  font-size: var(--t-afis);
+  font-weight: 340;
+  font-stretch: 74%;
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+.cikis__a {
+  color: var(--metin);
+  text-decoration: none;
+}
+/* bağlantının tıklama alanı bütün satırı kaplar: telden açıklamanın altına, dönüşten föy kenarına */
+.cikis__a::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  top: calc(var(--ara) - 22px);
+  bottom: 0;
+  left: var(--x);
+  right: 0;
+}
+.cikis__not {
+  max-width: 64ch;
+  margin-top: clamp(0.6rem, 0.4rem + 0.5vw, 1rem);
+  font-size: var(--t-govde);
+  line-height: 1.5;
+  color: var(--metin-2);
+}
+
+/* odak: temel.css'in 2 px mürekkep halkası ve başlığın altındaki işaret bandı; enerji durumu da açılır (JS) */
+.cikis__a:focus-visible { outline-offset: 6px; }
+
+/* ---------------------------------------------------------------- kesme noktası (föy kenarı) */
+.kesme {
+  position: absolute;
+  top: var(--ara);
+  right: var(--dilim);
+  width: 9px;
+  height: var(--cz-hat);
+  color: var(--metin);
+}
+.kesme__ok {
+  position: absolute;
+  right: 0;
+  top: calc(var(--cz-hat) / 2 - 4.5px);
+  width: 9px;
+  height: 9px;
+  background: var(--metin);
+  clip-path: polygon(0 0, 100% 50%, 0 100%);
+}
+.kesme__yazi {
+  position: absolute;
+  right: 0;
+  bottom: 9px;
+  font-family: var(--f-cizim);
+  font-size: var(--t-not);
+  line-height: 1;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+.kesme__kisa, .kesme__tam { display: block; padding-inline: 0.1em; }
+.kesme__kisa { text-align: right; transition: opacity var(--d-mikro) var(--e-ui); }
+.kesme__tam {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  clip-path: inset(-0.3em 100% -0.3em -0.3em);
+  background: var(--zemin);
+  transition: clip-path 0s linear 0s;
+}
+
+/* Armendus: dış proje bayrağı */
+.kesme--dis { right: calc(var(--dilim) + 26px); width: 0; }
+.kesme__bayrak {
+  position: absolute;
+  left: -8px;
+  bottom: -6px;
+  width: 32px;
+  height: 32px;
+  line-height: 0;
+}
+.kesme__glif { width: 32px; height: 32px; }
+.kesme--dis .kesme__yazi { right: 8px; bottom: 9px; }
+.cikis--dis .cikis__tel { right: calc(var(--dilim) + 26px); }
+
+/* sonraki föye devam eden bant (yalnızca enerjiliyken) ve föyden çıkan Armendus teli */
+.cikis__devam, .cikis__cikan {
+  position: absolute;
+  top: var(--ara);
+  height: var(--cz-hat);
+  pointer-events: none;
+}
+.cikis__devam {
+  z-index: 46;                         /* sonraki föyün kenarının (dilim, 45) üstünde */
+  left: calc(100% - var(--dilim) - 9px);
+  right: 0;
+}
+.cikis__cikan {
+  z-index: 51;                         /* çerçeve çizgisinin (50) üstünden geçer, başlık satırının (60) altında */
+  left: calc(100% - var(--dilim) - 26px);
+  right: calc(-1 * var(--c-sag) - 2px);
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+}
+
+/* ---------------------------------------------------------------- sonraki föyün kenarı (dilim) */
+.dilim {
+  position: fixed;
+  z-index: 45;                         /* içeriğin üstünde, çerçeve ve başlığın altında: föy çerçevenin altından kayar */
+  top: var(--c-ust);
+  bottom: var(--c-alt);
+  right: var(--c-sag);
+  width: 40px;
+  background: var(--zemin);
+  box-shadow: var(--g-yuksek), -1px 0 0 0 var(--murekkep);
+  transform: translateX(calc(100% + var(--c-sag)));
+  visibility: hidden;
+  pointer-events: none;
+  transition: transform var(--d-normal) var(--e-foy), visibility 0s linear var(--d-normal);
+}
+/* sonraki föyün sol kenarı: 12 px kenar boşluğu, 2 px dış çizgi, 20 px satır cetveli, 1 px iç çizgi */
+.dilim::before, .dilim::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  background: var(--metin);
+}
+.dilim::before { left: 12px; width: 2px; }
+.dilim::after { left: 34px; width: 1px; }
+.dilim__cetvel {
+  position: absolute;
+  top: 0;
+  bottom: 64px;
+  left: 14px;
+  width: 20px;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-family: var(--f-cizim);
+  font-size: var(--t-xs);
+  line-height: 1;
+  letter-spacing: 0;
+  color: color-mix(in srgb, var(--metin) 64%, var(--zemin));
+}
+.dilim__satir { flex: 1 1 0; display: grid; place-items: center; position: relative; isolation: isolate; }
+.dilim__satir + .dilim__satir { border-top: 1px solid var(--kil); }
+.dilim__satir.is-hedef { color: var(--metin); }
+.dilim__satir.is-hedef::before {
+  content: ""; position: absolute; left: 3px; right: 3px; top: 50%; height: 0.9em; margin-top: -0.45em;
+  background: var(--isaret); mix-blend-mode: multiply; z-index: -1;
+}
+/* alt köşe: antetin FÖY hücresi */
+.dilim__antet {
+  position: absolute;
+  left: 14px;
+  right: 0;
+  bottom: 0;
+  height: 64px;
+  border-top: var(--cz) solid var(--metin);
+  display: grid;
+  place-items: center;
+}
+.dilim__no { font-family: var(--f-cizim); font-size: var(--t-not); letter-spacing: 0; line-height: 1; margin-left: -6px; }
+
+/* ---------------------------------------------------------------- enerjili durum (sayfa-urunler.js data-etkin yazar) */
+.dagitim[data-etkin="a"] [data-hat="a"] .dusey__enerji,
+.dagitim[data-etkin="b"] [data-hat="b"] .dusey__enerji,
+.dagitim[data-etkin="c"] [data-hat="c"] .dusey__enerji,
+.dagitim[data-etkin="a"] .cikis--a .cikis__enerji,
+.dagitim[data-etkin="b"] .cikis--b .cikis__enerji,
+.dagitim[data-etkin="c"] .cikis--c .cikis__enerji {
+  opacity: 1;
+  transform: none;
+  transition: transform var(--es, 120ms) linear var(--eg, 0ms), opacity 0s linear var(--eg, 0ms);
+}
+/* kalem sırası: bara çıkışından aşağı, dönüşten sağa, föy kenarından öteye (sabit hızla) */
+.cikis--a .dusey--a .dusey__enerji { --eg: 0ms; --es: 60ms; }
+.cikis--a .cikis__tel .cikis__enerji { --eg: 60ms; --es: 200ms; }
+.cikis--a .cikis__devam .cikis__enerji { --eg: 260ms; --es: 50ms; }
+
+.cikis--a .dusey--b .dusey__enerji { --eg: 0ms; --es: 90ms; }
+.cikis--b .dusey--b .dusey__enerji { --eg: 90ms; --es: 60ms; }
+.cikis--b .cikis__tel .cikis__enerji { --eg: 150ms; --es: 200ms; }
+.cikis--b .cikis__devam .cikis__enerji { --eg: 350ms; --es: 50ms; }
+
+.cikis--a .dusey--c .dusey__enerji { --eg: 0ms; --es: 80ms; }
+.cikis--b .dusey--c .dusey__enerji { --eg: 80ms; --es: 80ms; }
+.cikis--c .dusey--c .dusey__enerji { --eg: 160ms; --es: 50ms; }
+.cikis--c .cikis__tel .cikis__enerji { --eg: 210ms; --es: 220ms; }
+.cikis--c .cikis__cikan .cikis__enerji { --eg: 430ms; --es: 60ms; }
+
+/* kesme noktası tam tanımını açar (çizici yazısı, soldan sağa) */
+.dagitim[data-etkin="a"] .cikis--a .kesme__kisa,
+.dagitim[data-etkin="b"] .cikis--b .kesme__kisa,
+.dagitim[data-etkin="c"] .cikis--c .kesme__kisa { opacity: 0; }
+.dagitim[data-etkin="a"] .cikis--a .kesme__tam,
+.dagitim[data-etkin="b"] .cikis--b .kesme__tam,
+.dagitim[data-etkin="c"] .cikis--c .kesme__tam {
+  clip-path: inset(-0.3em -0.3em -0.3em -0.3em);
+  transition: clip-path 240ms linear var(--g-yazi, 120ms);
+}
+.cikis--c { --g-yazi: 200ms; }
+
+/* Armendus teli çerçeveden çıkar */
+.dagitim[data-etkin="c"] .cikis__cikan { transform: none; transition: transform 60ms linear 430ms; }
+
+/* hedef föyün kenarı sağdan kayar */
+.dagitim[data-etkin="a"] ~ .dilim--a,
+.dagitim[data-etkin="b"] ~ .dilim--b {
+  transform: none;
+  visibility: visible;
+  transition: transform var(--d-normal) var(--e-foy) 160ms, visibility 0s;
+}
+
+/* föy çevirme sırasında kenar ve kesme noktası ayrı yakalanır: yeni föy kenarın altından gelir (gecis.css) */
+[data-gidis="a"] .dilim--a, [data-gidis="b"] .dilim--b { view-transition-name: foy-dilim; }
+[data-gidis="a"] .cikis--a .kesme, [data-gidis="b"] .cikis--b .kesme { view-transition-name: hat-devam; }
+
+/* ---------------------------------------------------------------- ilk çizim (yüklenince bir kez, 900 ms) */
+.dagitim {
+  --oynat: paused;
+  animation: urn-guvence 1ms linear 2.4s forwards;   /* betik çalışmazsa çizgiler yine görünür */
+}
+.dagitim.is-ciz { --oynat: running; }
+@keyframes urn-guvence { to { --oynat: running; } }
+
+[data-hareket="tam"] .dagitim .bara__cizgi,
+[data-hareket="tam"] .dagitim .cikis__tel { animation: urn-ciz-x var(--s) linear var(--g) both; animation-play-state: var(--oynat); }
+[data-hareket="tam"] .dagitim .dusey { animation: urn-ciz-y var(--s) linear var(--g) both; animation-play-state: var(--oynat); }
+[data-hareket="tam"] .dagitim .bara__nokta,
+[data-hareket="tam"] .dagitim .cikis__nokta,
+[data-hareket="tam"] .dagitim .kesme__ok,
+[data-hareket="tam"] .dagitim .bara__ok,
+[data-hareket="tam"] .dagitim .kesme__bayrak { animation: urn-bas 1ms linear var(--g) both; animation-play-state: var(--oynat); }
+[data-hareket="tam"] .dagitim .kesme__kisa,
+[data-hareket="tam"] .dagitim .bara__ref { animation: urn-harfle 240ms linear var(--g) both; animation-play-state: var(--oynat); }
+
+.bara__ok { --g: 0ms; }
+.bara__ref { --g: 0ms; }
+.bara__cizgi { --g: 60ms; --s: 360ms; }
+.bara__nokta--c { --g: 120ms; }
+.bara__nokta--b { --g: 170ms; }
+.bara__nokta--a { --g: 220ms; }
+.cikis--a .dusey--c { --g: 120ms; --s: 80ms; }
+.cikis--b .dusey--c { --g: 200ms; --s: 100ms; }
+.cikis--c .dusey--c { --g: 300ms; --s: 40ms; }
+.cikis--a .dusey--b { --g: 170ms; --s: 80ms; }
+.cikis--b .dusey--b { --g: 250ms; --s: 50ms; }
+.cikis--a .dusey--a { --g: 220ms; --s: 50ms; }
+.cikis--a .cikis__tel { --g: 270ms; --s: 270ms; }
+.cikis--b .cikis__tel { --g: 300ms; --s: 270ms; }
+.cikis--c .cikis__tel { --g: 340ms; --s: 300ms; }
+.cikis--a .kesme__ok { --g: 540ms; }
+.cikis--b .kesme__ok { --g: 570ms; }
+.cikis--c .kesme__bayrak { --g: 640ms; }
+.cikis--a .kesme__kisa { --g: 560ms; }
+.cikis--b .kesme__kisa { --g: 590ms; }
+.cikis--c .kesme__kisa { --g: 660ms; }
+.cikis--a .cikis__nokta { --g: 300ms; }
+.cikis--b .cikis__nokta { --g: 330ms; }
+
+@keyframes urn-ciz-x { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes urn-ciz-y { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+@keyframes urn-bas { from { opacity: 0; } to { opacity: 1; } }
+@keyframes urn-harfle { from { clip-path: inset(-0.3em 100% -0.3em -0.3em); } to { clip-path: inset(-0.3em -0.3em -0.3em -0.3em); } }
+
+/* ---------------------------------------------------------------- kapanış: afiş en küçük yazıya döner */
+.kapanis {
+  --pad-k: max(var(--kenar), calc((100% - var(--sayfa-max)) / 2 + var(--kenar)));
+  padding: clamp(6rem, 3rem + 14vh, 13rem) var(--pad-k) clamp(4rem, 2rem + 10vh, 9rem);
+  font-size: var(--t-kucuk);
+  line-height: 1.5;
+}
+.kapanis__satir + .kapanis__satir { margin-top: 0.35em; }
+.kapanis a { padding-block: 0.75em; }
+
+/* ---------------------------------------------------------------- azaltılmış hareket */
+[data-hareket="az"] .dusey__enerji,
+[data-hareket="az"] .cikis__enerji,
+[data-hareket="az"] .cikis__cikan,
+[data-hareket="az"] .kesme__kisa,
+[data-hareket="az"] .kesme__tam,
+[data-hareket="az"] .dilim { transition: none !important; }
+
+/* ---------------------------------------------------------------- dizüstü ve tablet */
+@media (max-width: 1279.98px) {
+  .dagitim { --k-a: 2; --k-b: 1.25; --k-c: 0.5; }
+}
+@media (max-width: 1023.98px) {
+  .dagitim { --k-a: 1.25; --k-b: 0.75; --k-c: 0.3; }
+}
+
+/* ---------------------------------------------------------------- telefon: bara sol kenarda düşey, çıkışlar kısa yatay */
+@media (max-width: 767.98px) {
+  .dagitim {
+    --t-afis: clamp(2.5rem, 9vw, 3.5rem);
+    --bx: calc(var(--pad) + 4px);
+    --x-a: var(--bx); --x-b: var(--bx); --x-c: var(--bx);
+    --girinti: 18px;
+    --dilim: 30px;
+    padding-top: 1.25rem;
+  }
+  .bara { height: 40px; }
+  .bara__cizgi, .bara__nokta { display: none; }
+  .bara__giris { left: calc(var(--bx) - 20px); bottom: 0; width: 44px; justify-content: center; }
+  .bara__ok { left: calc(50% - 4.5px + var(--cz-hat) / 2); top: auto; bottom: 0; margin-top: 0; clip-path: polygon(0 0, 100% 0, 50% 100%); }
+  .bara__ref { left: calc(50% + 10px); bottom: 2px; }
+  .cikis { --ara: clamp(1.75rem, 1rem + 3vh, 2.75rem); padding-right: calc(var(--dilim) + var(--pad)); }
+  .cikis--a { --ara: 1.25rem; }
+  .cikis__govde { padding-left: calc(var(--bx) + var(--girinti)); }
+  .cikis__a::after { left: var(--bx); }
+  .cikis__baslik { line-height: 0.98; }
+  .cikis__not { font-size: var(--t-govde); max-width: none; }
+  .cikis__nokta { display: block; top: calc(var(--ara) + var(--cz-hat) / 2 - 3.5px); left: calc(var(--bx) + var(--cz-hat) / 2); }
+  .kesme__tam { max-width: none; }
+  .dilim { width: 30px; }
+  .dilim::before { left: 8px; width: 1px; }
+  .dilim__cetvel { left: 9px; width: 16px; }
+  .dilim::after { left: 25px; }
+  .dilim__antet { left: 9px; }
+  .kapanis { --pad-k: calc(var(--kenar) + 4px + 18px); }
+}

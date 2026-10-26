@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" class="iec iec-acil-stop" data-sembol="acil-stop" data-tur="iec" data-kontrol="evet" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" font-family="Osifont, ISOCPEUR, Arial, sans-serif" overflow="visible">
+  <title>Acil stop (mantar başlı, pozitif açma)</title>
+  <desc>Açan kontak, kesik çizgiyle mantar başlı basmalı tahrik ve bağlantı üzerinde pozitif açma işareti (daire içinde ok). KONTROL: Pozitif açma işaretinin bağlantı üzerindeki yeri ve ok yönü doğrulanmalı; kilitlenme (mandal) işareti çizilmedi.</desc>
+  <path d="M28 0V16H38" data-sira="1" vector-effect="non-scaling-stroke"/>
+  <path d="M28 48V32" data-sira="2" vector-effect="non-scaling-stroke"/>
+  <path class="kontak__bicak" d="M28 32V11" transform="rotate(30 28 32)" data-mafsal="28 32" data-acik="-12" data-kapali="30" data-aci="30" data-sira="3" vector-effect="non-scaling-stroke"/>
+  <path d="M8 18A6 6 0 0 0 8 30Z" data-sira="4" vector-effect="non-scaling-stroke"/>
+  <path d="M8 24L11 24M12.5 24L14.5 24" data-sira="5" vector-effect="non-scaling-stroke"/>
+  <path d="M18 20.5A3.5 3.5 0 1 1 18 27.5A3.5 3.5 0 1 1 18 20.5" data-sira="6" vector-effect="non-scaling-stroke"/>
+  <path d="M16 24H19" data-sira="7" vector-effect="non-scaling-stroke"/>
+  <path class="dolgu" d="M20.6 24L18.6 22.6V25.4Z" fill="currentColor" stroke="none" data-sira="7"/>
+  <path class="kontak__bag" d="M21.5 24L24.5 24M26 24L29 24M30.5 24L32.62 24" data-sira="8" vector-effect="non-scaling-stroke"/>
+  <g class="baglantilar" stroke="none">
+    <circle class="baglanti" cx="28" cy="0" r="0" data-baglanti="ust" data-uc="ust"/>
+    <circle class="baglanti" cx="28" cy="48" r="0" data-baglanti="alt" data-uc="alt"/>
+  </g>
+</svg>

@@ -1,0 +1,164 @@
+/* Antet (title block): her föyün alt bilgisi. Hücre çizgileri ızgara boşluğundan gelir (gap = çizgi kalınlığı). */
+
+.antet-bant {
+  border-top: var(--cz-ince) solid var(--kil);
+  padding-block: calc(var(--bant-pad) * 0.6) var(--s-5);
+}
+.antet-bant__izgara {
+  display: grid;
+  grid-template-columns: repeat(var(--sutun), minmax(0, 1fr));
+  column-gap: var(--oluk);
+  row-gap: var(--s-6);
+  max-width: var(--sayfa-max);
+  margin-inline: auto;
+  padding-inline: var(--kenar);
+  align-items: end;
+}
+.foy-cizelgesi { grid-column: 1 / span 3; }
+.antet { grid-column: 4 / -1; }
+@media (max-width: 1279.98px) {
+  .foy-cizelgesi { grid-column: 1 / span 2; }
+  .antet { grid-column: 3 / -1; }
+}
+@media (max-width: 1023.98px) {
+  .foy-cizelgesi, .antet { grid-column: 1 / -1; }
+}
+
+/* ---------------------------------------------------------------- föy çizelgesi (drawing list) */
+.foy-cizelgesi__baslik {
+  font-family: var(--f-cizim);
+  font-size: var(--t-xs);
+  letter-spacing: 0;
+  text-transform: uppercase;
+  padding-bottom: 6px;
+  border-bottom: var(--cz) solid var(--cizgi-renk);
+}
+.foy-cizelgesi__liste { margin: 0; padding: 0; list-style: none; }
+.foy-cizelgesi__liste li { border-bottom: var(--cz-ince) solid var(--kil); }
+.foy-cizelgesi__liste a {
+  display: grid;
+  grid-template-columns: 1.75rem minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: 8px;
+  min-height: 34px;
+  padding: 7px 0 6px;
+  text-decoration: none;
+  font-size: var(--t-sm);
+  font-stretch: 86%;
+  line-height: 1.25;
+}
+.foy-cizelgesi__no, .foy-cizelgesi__tanim { font-family: var(--f-cizim); font-size: var(--t-xs); letter-spacing: 0; }
+.foy-cizelgesi__tanim { color: var(--metin-2); }
+.foy-cizelgesi__liste a[aria-current="page"] .foy-cizelgesi__ad { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 0.22em; }
+@media (hover: hover) and (pointer: fine) {
+  .foy-cizelgesi__liste a:hover .foy-cizelgesi__ad { background: linear-gradient(var(--isaret), var(--isaret)) 0 72% / 100% 0.46em no-repeat; }
+}
+@media (max-width: 1023.98px) {
+  .foy-cizelgesi__liste { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--oluk); }
+}
+@media (max-width: 419.98px) {
+  .foy-cizelgesi__liste { grid-template-columns: 1fr; }
+}
+
+/* ---------------------------------------------------------------- antet hücreleri */
+.antet {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: var(--cz);
+  border: var(--cz) solid var(--cizgi-renk);
+  background: var(--cizgi-renk);
+  font-size: var(--t-sm);
+  line-height: 1.35;
+}
+.antet__adres { display: contents; }
+.antet__hucre {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+  padding: 6px 10px 10px;
+  background: var(--zemin);
+}
+.antet__etiket {
+  font-family: var(--f-cizim);
+  font-size: var(--t-xs);
+  letter-spacing: 0;
+  line-height: 1.1;
+  text-transform: uppercase;
+  color: var(--metin);
+}
+.antet__deger { min-width: 0; overflow-wrap: anywhere; font-variant-numeric: tabular-nums; }
+.antet__deger a:not(.dugme) { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.18em; text-decoration-color: var(--kil); }
+@media (hover: hover) and (pointer: fine) {
+  .antet__deger a:not(.dugme):hover { text-decoration-color: currentColor; text-decoration-thickness: 2px; }
+}
+.antet__osi { font-family: var(--f-cizim); font-size: var(--t-not); letter-spacing: 0; }
+
+.antet__logo {
+  grid-column: 1 / span 3;
+  grid-row: 1 / span 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: var(--murekkep);
+}
+.antet__logo .logo { width: 100%; max-width: 150px; height: auto; }
+[data-zemin="ozalit"] .antet__logo { background: var(--zemin); }
+.antet__hucre--firma { grid-column: 4 / span 4; }
+.antet__hucre--adres { grid-column: 8 / -1; }
+.antet__hucre--telefon { grid-column: 4 / span 2; }
+.antet__hucre--gsm { grid-column: 6 / span 2; }
+.antet__hucre--eposta { grid-column: 8 / -1; }
+.antet__hucre--foy { grid-column: 1 / span 2; }
+.antet__hucre--foy-adi { grid-column: 3 / span 3; }
+.antet__hucre--tanim { grid-column: 6 / span 2; }
+.antet__hucre--guncelleme { grid-column: 8 / span 2; }
+.antet__hucre--olcek { grid-column: 10 / span 1; }
+.antet__hucre--ses { grid-column: 11 / -1; }
+.antet__hucre--onay { grid-column: 1 / -1; flex-direction: row; align-items: center; justify-content: space-between; gap: 16px; padding-block: 10px; }
+.antet__hucre--onay .antet__etiket { align-self: flex-start; }
+
+.antet__ses {
+  align-self: flex-start;
+  min-height: 28px;
+  padding: 0;
+  border: 0;
+  background: none;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+  text-decoration-color: var(--kil);
+}
+.antet__ses::before { content: ""; position: absolute; inset: 0; } /* hücrenin tamamı tıklanır */
+
+.antet__not {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 24px;
+  padding: 8px 10px;
+  background: var(--zemin);
+  font-size: var(--t-not);
+  color: var(--metin-2);
+}
+.antet__not a { color: var(--metin); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.18em; }
+
+@media (max-width: 1279.98px) and (min-width: 1024px) {
+  .antet__hucre--foy-adi { grid-column: 3 / span 3; }
+}
+@media (max-width: 767.98px) {
+  .antet { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .antet__logo { grid-column: 1 / -1; grid-row: auto; padding: 14px; justify-content: flex-start; }
+  .antet__logo .logo { max-width: 128px; }
+  .antet__hucre--firma, .antet__hucre--adres, .antet__hucre--eposta, .antet__hucre--onay { grid-column: 1 / -1; }
+  .antet__hucre--telefon, .antet__hucre--foy, .antet__hucre--tanim, .antet__hucre--olcek { grid-column: 1; }
+  .antet__hucre--gsm, .antet__hucre--foy-adi, .antet__hucre--guncelleme, .antet__hucre--ses { grid-column: 2; }
+  .antet__hucre--onay { flex-direction: column; align-items: stretch; }
+  .antet__hucre--onay .dugme { width: 100%; }
+}
+
+/* büyük ölçek (kurumsal sayfa): hücreler aynı, yazı büyür */
+.antet--buyuk { font-size: var(--t-md); }
+.antet--buyuk .antet__etiket { font-size: var(--t-not); }

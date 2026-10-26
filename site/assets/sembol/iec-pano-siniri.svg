@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 48" width="64" height="48" class="iec iec-pano-siniri" data-sembol="pano-siniri" data-tur="iec" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" font-family="Osifont, ISOCPEUR, Arial, sans-serif" overflow="visible">
+  <title>Pano sınırı</title>
+  <desc>Kesik-noktalı dikdörtgen (12-3-2-3 desen, 96 piksel boyutta).</desc>
+  <path d="M4 4L10 4M11.5 4L12.5 4M14 4L20 4M21.5 4L22.5 4M24 4L30 4M31.5 4L32.5 4M34 4L40 4M41.5 4L42.5 4M44 4L50 4M51.5 4L52.5 4M54 4L60 4" data-sira="1" vector-effect="non-scaling-stroke"/>
+  <path d="M60 4L60 10M60 11.5L60 12.5M60 14L60 20M60 21.5L60 22.5M60 24L60 30M60 31.5L60 32.5M60 34L60 40M60 41.5L60 42.5" data-sira="1" vector-effect="non-scaling-stroke"/>
+  <path d="M60 44L54 44M52.5 44L51.5 44M50 44L44 44M42.5 44L41.5 44M40 44L34 44M32.5 44L31.5 44M30 44L24 44M22.5 44L21.5 44M20 44L14 44M12.5 44L11.5 44M10 44L4 44" data-sira="1" vector-effect="non-scaling-stroke"/>
+  <path d="M4 44L4 38M4 36.5L4 35.5M4 34L4 28M4 26.5L4 25.5M4 24L4 18M4 16.5L4 15.5M4 14L4 8M4 6.5L4 5.5" data-sira="1" vector-effect="non-scaling-stroke"/>
+</svg>

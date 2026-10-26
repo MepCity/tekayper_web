@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" class="iec iec-klemens" data-sembol="klemens" data-tur="iec" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" font-family="Osifont, ISOCPEUR, Arial, sans-serif" overflow="visible">
+  <title>Klemens</title>
+  <desc>IEC 60617 bağlantı ucu: hat üzerinde küçük daire, klemens numarası yanında.</desc>
+  <path d="M24 0V21.5" data-sira="1" vector-effect="non-scaling-stroke"/>
+  <path d="M24 21.5A2.5 2.5 0 1 1 24 26.5A2.5 2.5 0 1 1 24 21.5" data-sira="2" vector-effect="non-scaling-stroke"/>
+  <path d="M24 26.5V48" data-sira="3" vector-effect="non-scaling-stroke"/>
+  <text class="uc-no klemens__no" data-uc="no" x="28.5" y="26" text-anchor="start" font-size="6" data-sira="9">1</text>
+  <g class="baglantilar" stroke="none">
+    <circle class="baglanti" cx="24" cy="0" r="0" data-baglanti="ust" data-uc="ust"/>
+    <circle class="baglanti" cx="24" cy="48" r="0" data-baglanti="alt" data-uc="alt"/>
+  </g>
+</svg>

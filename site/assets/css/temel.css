@@ -1,0 +1,163 @@
+/* Temel: sıfırlama, yazı, kağıt dokusu, föy ızgarası, bantlar, odak. */
+
+*, *::before, *::after { box-sizing: border-box; }
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  overflow-x: clip;
+  scroll-padding-top: calc(var(--c-ust) + 16px);
+  background: var(--zemin);
+  color: var(--metin);
+}
+body {
+  margin: 0;
+  min-height: 100dvh;
+  background: var(--zemin);
+  color: var(--metin);
+  font-family: var(--f-metin);
+  font-size: var(--t-govde);
+  font-weight: 400;
+  font-stretch: 100%;
+  line-height: 1.6;
+  letter-spacing: 0.003em;
+  font-kerning: normal;
+  font-variant-ligatures: common-ligatures;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* çerçevenin içi: içerik cetvellerin altından akar */
+  padding: var(--c-ust) var(--c-sag) var(--c-alt) var(--c-sol);
+  /* telefonda taşan bir içerik yerleşim görüntü alanını genişletip sabit başlığı ekran dışına itmesin
+     (html'deki clip görüntü alanına aktarılır, bu satır gövdenin kendisini kırpar; sticky bozulmaz) */
+  overflow-x: clip;
+}
+html[data-lenis] { scroll-behavior: auto; }
+@media (prefers-reduced-motion: no-preference) {
+  html:not([data-lenis]) { scroll-behavior: smooth; }
+}
+
+/* kağıt lifi dokusu: sabit, hareketsiz, %4 */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-doku);
+  pointer-events: none;
+  opacity: 0.04;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='l'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9 0.55' numOctaves='3' seed='7' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.1 0 0 0 0 0.11 0 0 0 0 0.12 0 0 0 1.2 -0.1'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23l)'/%3E%3C/svg%3E");
+  background-size: 240px 240px;
+}
+[data-zemin="ozalit"] body::after { mix-blend-mode: screen; opacity: 0.05; }
+
+img, svg, video, picture { display: block; max-width: 100%; }
+img, video { height: auto; }
+svg { overflow: visible; }
+button, input, select, textarea { font: inherit; color: inherit; letter-spacing: inherit; }
+button { cursor: pointer; }
+a { color: inherit; }
+p, ul, ol, dl, figure, blockquote, address { margin: 0; }
+address { font-style: normal; }
+ul[class], ol[class] { list-style: none; padding: 0; }
+table { border-collapse: collapse; }
+hr { border: 0; border-top: 1px solid var(--kil); margin: 0; }
+
+/* başlıklar: hafif ağırlık, sıkı aralık, dengeli satır */
+h1, h2, h3, h4 { margin: 0; font-weight: 400; text-wrap: balance; }
+h1, .t-h1 { font-size: var(--t-h1); font-weight: 360; line-height: 1.0; letter-spacing: -0.02em; }
+h2, .t-h2 { font-size: var(--t-h2); font-weight: 420; line-height: 1.08; letter-spacing: -0.012em; }
+h3, .t-h3 { font-size: var(--t-h3); font-weight: 560; font-stretch: 82%; line-height: 1.2; letter-spacing: 0; }
+.t-display { font-size: var(--t-display); font-weight: 340; line-height: 0.96; letter-spacing: -0.025em; text-wrap: balance; }
+.t-govde { font-size: var(--t-govde); line-height: 1.6; }
+.t-kucuk { font-size: var(--t-kucuk); line-height: 1.5; letter-spacing: 0.005em; }
+p, li { text-wrap: pretty; }
+.olcu { max-width: var(--olcu); }
+.ikincil { color: var(--metin-2); }
+strong, b, .vurgulu { font-weight: 560; }
+
+/* çizim katmanı yazısı (ISO 3098): asla harf aralığı verilmez */
+.t-cizim, .osi { font-family: var(--f-cizim); font-weight: 400; letter-spacing: 0; font-size: var(--t-not); line-height: 1.35; }
+.t-alan { font-family: var(--f-cizim); font-size: var(--t-xs); letter-spacing: 0; line-height: 1.2; text-transform: uppercase; }
+.sayi { font-variant-numeric: tabular-nums; }
+
+/* işaret kalemi bandı: metnin altında, x yüksekliğinde */
+mark, .isaret {
+  color: inherit;
+  background: linear-gradient(var(--isaret), var(--isaret)) 0 72% / 100% 0.46em no-repeat;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  padding-inline: 0.06em;
+}
+::selection { background: var(--isaret); color: var(--murekkep); }
+
+/* metin bağlantıları */
+.metin a, a.alti-cizili {
+  text-decoration-line: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 0.18em;
+  transition: text-decoration-thickness var(--d-mikro) var(--e-ui);
+}
+@media (hover: hover) and (pointer: fine) {
+  .metin a:hover, a.alti-cizili:hover { text-decoration-thickness: 3px; }
+}
+
+/* odak: 2 px mürekkep, 3 px boşluk, her zeminde görünür */
+:focus { outline: none; }
+:focus-visible { outline: 2px solid var(--odak); outline-offset: 3px; }
+a:focus-visible:not(.dugme) {
+  background: linear-gradient(var(--isaret), var(--isaret)) 0 72% / 100% 0.46em no-repeat;
+}
+[data-zemin="ozalit"] a:focus-visible:not(.dugme) { background: none; }
+
+/* yalnızca ekran okuyucu */
+.gizli {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+.atla {
+  position: fixed;
+  left: var(--c-sol);
+  top: var(--c-dis);
+  z-index: calc(var(--z-doku) + 1);
+  padding: 12px 20px;
+  background: var(--plaka);
+  color: var(--plaka-metin);
+  font-weight: 560;
+  text-decoration: none;
+  transform: translateY(-200%);
+}
+.atla:focus-visible { transform: none; outline-offset: 2px; }
+
+/* föy ızgarası: 8 çizim sütunu = üst cetvelin 1-8 numaraları */
+.izgara {
+  display: grid;
+  grid-template-columns: repeat(var(--sutun), minmax(0, 1fr));
+  column-gap: var(--oluk);
+  width: 100%;
+  max-width: var(--sayfa-max);
+  margin-inline: auto;
+  padding-inline: var(--kenar);
+}
+.izgara > * { grid-column: 1 / -1; min-width: 0; }
+
+/* föy bantları (satır A, B, C ...): sınır çizgisi kılçizgi, renkli değil */
+main { display: block; }
+.bant {
+  position: relative;
+  padding-block: var(--bant-pad);
+}
+.bant + .bant { border-top: 1px solid var(--kil); }
+.bant--siki { padding-block: calc(var(--bant-pad) * 0.5); }
+
+/* hedef bölüm başlığı (çapraz referansla gelindiğinde) için başlık üstü boşluk */
+[data-satir] { scroll-margin-top: calc(var(--c-ust) + 16px); }
+
+/* uzun bölümler ekran dışındayken çizilmez (sabitlenen bölümlerde kullanmayın) */
+.ekran-disi { content-visibility: auto; contain-intrinsic-size: auto 900px; }

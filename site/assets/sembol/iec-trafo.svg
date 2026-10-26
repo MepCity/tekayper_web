@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" class="iec iec-trafo" data-sembol="trafo" data-tur="iec" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" font-family="Osifont, ISOCPEUR, Arial, sans-serif" overflow="visible">
+  <title>Transformatör (tek hat)</title>
+  <desc>İki kesişen daire.</desc>
+  <path d="M24 0V5" data-sira="1" vector-effect="non-scaling-stroke"/>
+  <path d="M24 5A10 10 0 1 1 24 25A10 10 0 1 1 24 5" data-sira="2" vector-effect="non-scaling-stroke"/>
+  <path d="M24 21A10 10 0 1 1 24 41A10 10 0 1 1 24 21" data-sira="3" vector-effect="non-scaling-stroke"/>
+  <path d="M24 41V48" data-sira="4" vector-effect="non-scaling-stroke"/>
+  <g class="baglantilar" stroke="none">
+    <circle class="baglanti" cx="24" cy="0" r="0" data-baglanti="ust" data-uc="ust"/>
+    <circle class="baglanti" cx="24" cy="48" r="0" data-baglanti="alt" data-uc="alt"/>
+  </g>
+</svg>

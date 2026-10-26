@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" class="iec iec-surucu" data-sembol="surucu" data-tur="iec" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" font-family="Osifont, ISOCPEUR, Arial, sans-serif" overflow="visible">
+  <title>Frekans konvertörü / AC sürücü</title>
+  <desc>Dönüştürücü: kare ve köşegen, sol üstte giriş ~, sağ altta çıkış ~.</desc>
+  <path d="M24 0V12" data-sira="1" vector-effect="non-scaling-stroke"/>
+  <path d="M12 12H36V36H12Z" data-sira="2" vector-effect="non-scaling-stroke"/>
+  <path d="M12 36L36 12" data-sira="3" vector-effect="non-scaling-stroke"/>
+  <path d="M15.83 19.3C16.5 17.83 17.57 17.7 18.5 18.5C19.43 19.3 20.5 19.17 21.17 17.7" data-sira="4" vector-effect="non-scaling-stroke"/>
+  <path d="M26.83 30.3C27.5 28.83 28.57 28.7 29.5 29.5C30.43 30.3 31.5 30.17 32.17 28.7" data-sira="5" vector-effect="non-scaling-stroke"/>
+  <path d="M24 36V48" data-sira="6" vector-effect="non-scaling-stroke"/>
+  <g class="baglantilar" stroke="none">
+    <circle class="baglanti" cx="24" cy="0" r="0" data-baglanti="ust" data-uc="ust"/>
+    <circle class="baglanti" cx="24" cy="48" r="0" data-baglanti="alt" data-uc="alt"/>
+  </g>
+</svg>

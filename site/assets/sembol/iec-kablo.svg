@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" class="iec iec-kablo" data-sembol="kablo" data-tur="iec" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" font-family="Osifont, ISOCPEUR, Arial, sans-serif" overflow="visible">
+  <title>Kablo</title>
+  <desc>Hat üzerinde iletken sayısı kadar eğik çizgi; kablo etiketi (-W1) ve kesit yazısı ayrı.</desc>
+  <path d="M24 0V48" data-sira="1" vector-effect="non-scaling-stroke"/>
+  <path class="kablo__damar" d="M20 22.5L28 16.5" data-sira="2" vector-effect="non-scaling-stroke"/>
+  <path class="kablo__damar" d="M20 25.5L28 19.5" data-sira="2" vector-effect="non-scaling-stroke"/>
+  <path class="kablo__damar" d="M20 28.5L28 22.5" data-sira="2" vector-effect="non-scaling-stroke"/>
+  <path class="kablo__damar" d="M20 31.5L28 25.5" data-sira="2" vector-effect="non-scaling-stroke"/>
+  <text class="sembol-yazi kablo__kesit" x="31" y="26" text-anchor="start" font-size="6" data-sira="9"></text>
+  <g class="baglantilar" stroke="none">
+    <circle class="baglanti" cx="24" cy="0" r="0" data-baglanti="ust" data-uc="ust"/>
+    <circle class="baglanti" cx="24" cy="48" r="0" data-baglanti="alt" data-uc="alt"/>
+  </g>
+</svg>

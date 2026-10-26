@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" class="iec iec-hoparlor" data-sembol="hoparlor" data-tur="iec" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" font-family="Osifont, ISOCPEUR, Arial, sans-serif" overflow="visible">
+  <title>Hoparlör (ses düğmesi)</title>
+  <desc>IEC 60617 hoparlör: dikdörtgen ve koni. Dalga çizgileri ses açıkken, çarpı ses kapalıyken görünür.</desc>
+  <path d="M10 18H16V30H10Z" data-sira="1" vector-effect="non-scaling-stroke"/>
+  <path d="M16 18L26 10V38L16 30" data-sira="2" vector-effect="non-scaling-stroke"/>
+  <path class="hoparlor__dalga glif__dalga" d="M31 18.5A7 7 0 0 1 31 29.5" data-sira="3" vector-effect="non-scaling-stroke"/>
+  <path class="hoparlor__dalga glif__dalga" d="M35 14.5A12 12 0 0 1 35 33.5" data-sira="3" vector-effect="non-scaling-stroke"/>
+  <path class="hoparlor__kapali glif__sessiz" d="M31 19L39 29" data-sira="3" vector-effect="non-scaling-stroke"/>
+  <path class="hoparlor__kapali glif__sessiz" d="M39 19L31 29" data-sira="3" vector-effect="non-scaling-stroke"/>
+</svg>

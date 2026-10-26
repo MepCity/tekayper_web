@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" class="iec iec-kesme-noktasi" data-sembol="kesme-noktasi" data-tur="iec" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" font-family="Osifont, ISOCPEUR, Arial, sans-serif" overflow="visible">
+  <title>Kesme noktası (çapraz referans)</title>
+  <desc>Hat ucunda dolu ok; hedef föy ve satır yazısı (/4.A) yanında.</desc>
+  <path d="M24 0V30" data-sira="1" vector-effect="non-scaling-stroke"/>
+  <path class="dolgu" d="M20 30H28L24 38Z" fill="currentColor" stroke="none" data-sira="2"/>
+  <text class="sembol-yazi kesme__ref" x="29" y="36" text-anchor="start" font-size="6" data-sira="3"></text>
+  <g class="baglantilar" stroke="none">
+    <circle class="baglanti" cx="24" cy="0" r="0" data-baglanti="ust" data-uc="ust"/>
+  </g>
+</svg>

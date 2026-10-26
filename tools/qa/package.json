@@ -1,0 +1,23 @@
+{
+  "name": "tekayper-qa",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Tekayper ŞEMA QA harness (spec section 6). Dev only, not deployed.",
+  "type": "module",
+  "scripts": {
+    "semboller": "node semboller.mjs",
+    "ekran": "node ekran.mjs",
+    "ornekle": "node ornekle.mjs",
+    "klavye": "node klavye.mjs",
+    "baglanti": "node baglanti.mjs",
+    "erisim": "node erisim.mjs",
+    "arama": "node arama.mjs",
+    "sogutma": "node sogutma.mjs && php sogutma-testi.php",
+    "form": "node form.mjs",
+    "og": "node og.mjs"
+  },
+  "dependencies": {
+    "axe-core": "4.14.0",
+    "playwright-core": "1.64.1"
+  }
+}

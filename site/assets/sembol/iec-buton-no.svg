@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" class="iec iec-buton-no" data-sembol="buton-no" data-tur="iec" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" font-family="Osifont, ISOCPEUR, Arial, sans-serif" overflow="visible">
+  <title>Kumanda butonu (NO)</title>
+  <desc>Kapanan kontak, kesik çizgiyle basmalı tahrik (E biçimi).</desc>
+  <path d="M24 0V16" data-sira="1" vector-effect="non-scaling-stroke"/>
+  <path d="M24 48V32" data-sira="2" vector-effect="non-scaling-stroke"/>
+  <path class="kontak__bicak" d="M24 32V11" transform="rotate(-30 24 32)" data-mafsal="24 32" data-acik="-30" data-kapali="0" data-aci="-30" data-sira="3" vector-effect="non-scaling-stroke"/>
+  <path d="M10 20H6V28H10" data-sira="4" vector-effect="non-scaling-stroke"/>
+  <path class="kontak__bag" d="M6 24L9 24M10.5 24L13.5 24M15 24L18 24" data-sira="5" vector-effect="non-scaling-stroke"/>
+  <text class="uc-no" data-uc="ust" x="21" y="8" text-anchor="end" font-size="6" data-sira="9"></text>
+  <text class="uc-no" data-uc="alt" x="21" y="46" text-anchor="end" font-size="6" data-sira="9"></text>
+  <g class="baglantilar" stroke="none">
+    <circle class="baglanti" cx="24" cy="0" r="0" data-baglanti="ust" data-uc="ust"/>
+    <circle class="baglanti" cx="24" cy="48" r="0" data-baglanti="alt" data-uc="alt"/>
+  </g>
+</svg>

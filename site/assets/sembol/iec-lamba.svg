@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" class="iec iec-lamba" data-sembol="lamba" data-tur="iec" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" font-family="Osifont, ISOCPEUR, Arial, sans-serif" overflow="visible">
+  <title>Sinyal lambası</title>
+  <desc>IEC 60617 lamba: daire içinde çarpı.</desc>
+  <path d="M24 0V16" data-sira="1" vector-effect="non-scaling-stroke"/>
+  <path d="M24 16A8 8 0 1 1 24 32A8 8 0 1 1 24 16" data-sira="2" vector-effect="non-scaling-stroke"/>
+  <path d="M18.34 18.34L29.66 29.66" data-sira="3" vector-effect="non-scaling-stroke"/>
+  <path d="M29.66 18.34L18.34 29.66" data-sira="3" vector-effect="non-scaling-stroke"/>
+  <path d="M24 32V48" data-sira="4" vector-effect="non-scaling-stroke"/>
+  <text class="uc-no" data-uc="ust" x="21" y="8" text-anchor="end" font-size="6" data-sira="9">X1</text>
+  <text class="uc-no" data-uc="alt" x="21" y="46" text-anchor="end" font-size="6" data-sira="9">X2</text>
+  <g class="baglantilar" stroke="none">
+    <circle class="baglanti" cx="24" cy="0" r="0" data-baglanti="ust" data-uc="ust"/>
+    <circle class="baglanti" cx="24" cy="48" r="0" data-baglanti="alt" data-uc="alt"/>
+  </g>
+</svg>

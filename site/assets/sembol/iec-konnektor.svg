@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" class="iec iec-konnektor" data-sembol="konnektor" data-tur="iec" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" font-family="Osifont, ISOCPEUR, Arial, sans-serif" overflow="visible">
+  <title>Konnektör (fiş ve priz)</title>
+  <desc>Dişi kontak (yay) üstte, erkek kontak (dolu çubuk) alttan girer.</desc>
+  <path d="M24 0V16" data-sira="1" vector-effect="non-scaling-stroke"/>
+  <path d="M18 22A6 6 0 0 1 30 22" data-sira="2" vector-effect="non-scaling-stroke"/>
+  <path class="dolgu" d="M22.5 20H25.5V30H22.5Z" fill="currentColor" stroke="none" data-sira="3"/>
+  <path d="M24 30V48" data-sira="4" vector-effect="non-scaling-stroke"/>
+  <g class="baglantilar" stroke="none">
+    <circle class="baglanti" cx="24" cy="0" r="0" data-baglanti="ust" data-uc="ust"/>
+    <circle class="baglanti" cx="24" cy="48" r="0" data-baglanti="alt" data-uc="alt"/>
+  </g>
+</svg>

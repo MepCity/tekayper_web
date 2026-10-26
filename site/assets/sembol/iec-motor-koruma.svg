@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 64" width="48" height="64" class="iec iec-motor-koruma" data-sembol="motor-koruma" data-tur="iec" data-kontrol="evet" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" font-family="Osifont, ISOCPEUR, Arial, sans-serif" overflow="visible">
+  <title>Motor koruma şalteri, tek hat</title>
+  <desc>Devre kesici kontağı, altta seri termik (ısıl) açtırma ve manyetik (aşırı akım) açtırma blokları, kesik çizgiyle bıçağa bağlı. KONTROL: Açtırma bloklarının çizim biçimi (termik zikzak ve manyetik köşeli işaret) mühendis onayı istiyor.</desc>
+  <path d="M24 0V12" data-sira="1" vector-effect="non-scaling-stroke"/>
+  <path d="M21 9L27 15" data-sira="2" vector-effect="non-scaling-stroke"/>
+  <path d="M27 9L21 15" data-sira="2" vector-effect="non-scaling-stroke"/>
+  <path d="M24 28V34" data-sira="3" vector-effect="non-scaling-stroke"/>
+  <path class="kontak__bicak" d="M24 28V8" transform="rotate(-30 24 28)" data-mafsal="24 28" data-acik="-30" data-kapali="0" data-aci="-30" data-sira="4" vector-effect="non-scaling-stroke"/>
+  <path d="M16 34H32V42H16Z" data-sira="5" vector-effect="non-scaling-stroke"/>
+  <path d="M19 40V36H22V40H25V36H28V40" data-sira="6" vector-effect="non-scaling-stroke"/>
+  <path d="M24 42V46" data-sira="7" vector-effect="non-scaling-stroke"/>
+  <path d="M16 46H32V54H16Z" data-sira="8" vector-effect="non-scaling-stroke"/>
+  <path d="M27 48H21V52H27" data-sira="9" vector-effect="non-scaling-stroke"/>
+  <path d="M24 54V64" data-sira="10" vector-effect="non-scaling-stroke"/>
+  <path d="M16 38L13 38M11.5 38L8.5 38" data-sira="11" vector-effect="non-scaling-stroke"/>
+  <path d="M16 50L13 50M11.5 50L8.5 50" data-sira="11" vector-effect="non-scaling-stroke"/>
+  <path d="M8 50L8 47M8 45.5L8 42.5M8 41L8 38M8 36.5L8 33.5M8 32L8 29M8 27.5L8 24.5M8 23L8 22" data-sira="12" vector-effect="non-scaling-stroke"/>
+  <path class="kontak__bag" d="M8 22L11 22M12.5 22L15.5 22M17 22L20 22" data-sira="13" vector-effect="non-scaling-stroke"/>
+  <g class="baglantilar" stroke="none">
+    <circle class="baglanti" cx="24" cy="0" r="0" data-baglanti="ust" data-uc="ust"/>
+    <circle class="baglanti" cx="24" cy="64" r="0" data-baglanti="alt" data-uc="alt"/>
+  </g>
+</svg>

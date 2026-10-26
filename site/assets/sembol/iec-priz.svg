@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" class="iec iec-priz" data-sembol="priz" data-tur="iec" data-kontrol="evet" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" font-family="Osifont, ISOCPEUR, Arial, sans-serif" overflow="visible">
+  <title>Priz</title>
+  <desc>Tesisat planı priz işareti: yarım daire ve besleme hattı. KONTROL: Priz sembolünün yönü (yarım dairenin açık tarafı) ve topraklı priz çizgisi IEC 60617-11 ile karşılaştırılmalı.</desc>
+  <path d="M24 0V22" data-sira="1" vector-effect="non-scaling-stroke"/>
+  <path d="M12 22H36" data-sira="2" vector-effect="non-scaling-stroke"/>
+  <path d="M14 22A10 10 0 0 0 34 22" data-sira="3" vector-effect="non-scaling-stroke"/>
+  <g class="baglantilar" stroke="none">
+    <circle class="baglanti" cx="24" cy="0" r="0" data-baglanti="ust" data-uc="ust"/>
+  </g>
+</svg>

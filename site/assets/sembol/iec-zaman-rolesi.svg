@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" class="iec iec-zaman-rolesi" data-sembol="zaman-rolesi" data-tur="iec" data-kontrol="evet" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" font-family="Osifont, ISOCPEUR, Arial, sans-serif" overflow="visible">
+  <title>Zaman rölesi bobini (çekmede gecikmeli)</title>
+  <desc>Bobin dikdörtgeninin yanında çaprazlı kare: çekmede gecikmeli röle bobini. KONTROL: Çekmede gecikme için çaprazlı yan kare (düşmede gecikmede dolu kare) doğrulanmalı.</desc>
+  <path d="M24 0V19" data-sira="1" vector-effect="non-scaling-stroke"/>
+  <path d="M14 19H34V29H14Z" data-sira="2" vector-effect="non-scaling-stroke"/>
+  <path d="M34 19H44V29H34Z" data-sira="3" vector-effect="non-scaling-stroke"/>
+  <path d="M34 19L44 29" data-sira="4" vector-effect="non-scaling-stroke"/>
+  <path d="M44 19L34 29" data-sira="4" vector-effect="non-scaling-stroke"/>
+  <path d="M24 29V48" data-sira="5" vector-effect="non-scaling-stroke"/>
+  <text class="uc-no" data-uc="ust" x="21" y="8" text-anchor="end" font-size="6" data-sira="9">A1</text>
+  <text class="uc-no" data-uc="alt" x="21" y="46" text-anchor="end" font-size="6" data-sira="9">A2</text>
+  <g class="baglantilar" stroke="none">
+    <circle class="baglanti" cx="24" cy="0" r="0" data-baglanti="ust" data-uc="ust"/>
+    <circle class="baglanti" cx="24" cy="48" r="0" data-baglanti="alt" data-uc="alt"/>
+  </g>
+</svg>

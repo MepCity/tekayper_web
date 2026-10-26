@@ -1,0 +1,6 @@
+app/config.local.php
+storage/anahtar.txt
+storage/eposta-log.txt
+storage/talepler/*.jsonl
+storage/hiz/*.json
+.DS_Store

@@ -1,0 +1,17 @@
+# Render Blueprint: tek ücretsiz Docker web servisi (önizleme). Ayrıntı: ONIZLEME-RENDER.md
+services:
+  - type: web
+    name: tekayper-onizleme
+    runtime: docker
+    plan: free
+    region: frankfurt
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    healthCheckPath: /saglik.html
+    autoDeploy: false
+    envVars:
+      - key: TEKAYPER_ONIZLEME
+        value: "1"
+      - key: TEKAYPER_MAIL
+        value: log
+      # Şifre istenirse Render panelinden ONIZLEME_SIFRE (ve isteğe bağlı ONIZLEME_KULLANICI) ekleyin; boşsa site herkese açıktır.

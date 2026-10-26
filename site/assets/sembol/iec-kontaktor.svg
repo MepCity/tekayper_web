@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 48" width="64" height="48" class="iec iec-kontaktor" data-sembol="kontaktor" data-tur="iec" data-kontrol="evet" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" font-family="Osifont, ISOCPEUR, Arial, sans-serif" overflow="visible">
+  <title>Kontaktör ana kontakları, 3 kutup</title>
+  <desc>Üç kapanan kontak, sabit uçlarda kontaktör işlevi (yarım daire), kutuplar kesik çizgiyle bağlı. Uç numaraları 1-6. KONTROL: Kontaktör işlevi yarım dairesinin yönü (sabit ucun bitiminde, bıçağa açık) doğrulanmalı.</desc>
+  <path d="M16 0V16" data-sira="1" vector-effect="non-scaling-stroke"/>
+  <path d="M32 0V16" data-sira="1" vector-effect="non-scaling-stroke"/>
+  <path d="M48 0V16" data-sira="1" vector-effect="non-scaling-stroke"/>
+  <path d="M13 19A3 3 0 0 1 19 19" data-sira="2" vector-effect="non-scaling-stroke"/>
+  <path d="M29 19A3 3 0 0 1 35 19" data-sira="2" vector-effect="non-scaling-stroke"/>
+  <path d="M45 19A3 3 0 0 1 51 19" data-sira="2" vector-effect="non-scaling-stroke"/>
+  <path d="M16 48V32" data-sira="3" vector-effect="non-scaling-stroke"/>
+  <path d="M32 48V32" data-sira="3" vector-effect="non-scaling-stroke"/>
+  <path d="M48 48V32" data-sira="3" vector-effect="non-scaling-stroke"/>
+  <path class="kontak__bicak" d="M16 32V11" transform="rotate(-30 16 32)" data-mafsal="16 32" data-acik="-30" data-kapali="0" data-aci="-30" data-sira="4" vector-effect="non-scaling-stroke"/>
+  <path class="kontak__bicak" d="M32 32V11" transform="rotate(-30 32 32)" data-mafsal="32 32" data-acik="-30" data-kapali="0" data-aci="-30" data-sira="4" vector-effect="non-scaling-stroke"/>
+  <path class="kontak__bicak" d="M48 32V11" transform="rotate(-30 48 32)" data-mafsal="48 32" data-acik="-30" data-kapali="0" data-aci="-30" data-sira="4" vector-effect="non-scaling-stroke"/>
+  <path class="kontak__bag" d="M4 24L7 24M8.5 24L11.5 24M13 24L16 24M17.5 24L20.5 24M22 24L25 24M26.5 24L29.5 24M31 24L34 24M35.5 24L38.5 24M40 24L43 24" data-sira="5" vector-effect="non-scaling-stroke" data-kayma="4.62"/>
+  <text class="uc-no" data-uc="ust1" x="13" y="8" text-anchor="end" font-size="6" data-sira="9">1</text>
+  <text class="uc-no" data-uc="alt1" x="13" y="46" text-anchor="end" font-size="6" data-sira="9">2</text>
+  <text class="uc-no" data-uc="ust2" x="29" y="8" text-anchor="end" font-size="6" data-sira="9">3</text>
+  <text class="uc-no" data-uc="alt2" x="29" y="46" text-anchor="end" font-size="6" data-sira="9">4</text>
+  <text class="uc-no" data-uc="ust3" x="45" y="8" text-anchor="end" font-size="6" data-sira="9">5</text>
+  <text class="uc-no" data-uc="alt3" x="45" y="46" text-anchor="end" font-size="6" data-sira="9">6</text>
+  <g class="baglantilar" stroke="none">
+    <circle class="baglanti" cx="16" cy="0" r="0" data-baglanti="ust" data-uc="ust1"/>
+    <circle class="baglanti" cx="16" cy="48" r="0" data-baglanti="alt" data-uc="alt1"/>
+    <circle class="baglanti" cx="32" cy="0" r="0" data-baglanti="ust" data-uc="ust2"/>
+    <circle class="baglanti" cx="32" cy="48" r="0" data-baglanti="alt" data-uc="alt2"/>
+    <circle class="baglanti" cx="48" cy="0" r="0" data-baglanti="ust" data-uc="ust3"/>
+    <circle class="baglanti" cx="48" cy="48" r="0" data-baglanti="alt" data-uc="alt3"/>
+  </g>
+</svg>

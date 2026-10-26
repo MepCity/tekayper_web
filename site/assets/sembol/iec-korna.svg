@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" class="iec iec-korna" data-sembol="korna" data-tur="iec" data-kontrol="evet" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" font-family="Osifont, ISOCPEUR, Arial, sans-serif" overflow="visible">
+  <title>Korna / siren</title>
+  <desc>Sürücü gövdesi ve genişleyen huni. KONTROL: Korna (huni) gösterimi IEC 60617 08-10 grubuna göre kontrol edilmeli.</desc>
+  <path d="M24 0V14" data-sira="1" vector-effect="non-scaling-stroke"/>
+  <path d="M18 14H30V20H18Z" data-sira="2" vector-effect="non-scaling-stroke"/>
+  <path d="M18 20L11 34H37L30 20" data-sira="3" vector-effect="non-scaling-stroke"/>
+  <g class="baglantilar" stroke="none">
+    <circle class="baglanti" cx="24" cy="0" r="0" data-baglanti="ust" data-uc="ust"/>
+  </g>
+</svg>

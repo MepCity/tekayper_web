@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 48" width="64" height="48" class="iec iec-klemens-sirasi" data-sembol="klemens-sirasi" data-tur="iec" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" font-family="Osifont, ISOCPEUR, Arial, sans-serif" overflow="visible">
+  <title>Klemens sırası</title>
+  <desc>Dört klemens, numaraları 1-4.</desc>
+  <path d="M8 0V21.5" data-sira="1" vector-effect="non-scaling-stroke"/>
+  <path d="M24 0V21.5" data-sira="1" vector-effect="non-scaling-stroke"/>
+  <path d="M40 0V21.5" data-sira="1" vector-effect="non-scaling-stroke"/>
+  <path d="M56 0V21.5" data-sira="1" vector-effect="non-scaling-stroke"/>
+  <path d="M8 21.5A2.5 2.5 0 1 1 8 26.5A2.5 2.5 0 1 1 8 21.5" data-sira="2" vector-effect="non-scaling-stroke"/>
+  <path d="M24 21.5A2.5 2.5 0 1 1 24 26.5A2.5 2.5 0 1 1 24 21.5" data-sira="2" vector-effect="non-scaling-stroke"/>
+  <path d="M40 21.5A2.5 2.5 0 1 1 40 26.5A2.5 2.5 0 1 1 40 21.5" data-sira="2" vector-effect="non-scaling-stroke"/>
+  <path d="M56 21.5A2.5 2.5 0 1 1 56 26.5A2.5 2.5 0 1 1 56 21.5" data-sira="2" vector-effect="non-scaling-stroke"/>
+  <path d="M8 26.5V48" data-sira="3" vector-effect="non-scaling-stroke"/>
+  <path d="M24 26.5V48" data-sira="3" vector-effect="non-scaling-stroke"/>
+  <path d="M40 26.5V48" data-sira="3" vector-effect="non-scaling-stroke"/>
+  <path d="M56 26.5V48" data-sira="3" vector-effect="non-scaling-stroke"/>
+  <text class="uc-no klemens__no" data-uc="no1" x="12" y="26" text-anchor="start" font-size="6" data-sira="9">1</text>
+  <text class="uc-no klemens__no" data-uc="no2" x="28" y="26" text-anchor="start" font-size="6" data-sira="9">2</text>
+  <text class="uc-no klemens__no" data-uc="no3" x="44" y="26" text-anchor="start" font-size="6" data-sira="9">3</text>
+  <text class="uc-no klemens__no" data-uc="no4" x="60" y="26" text-anchor="start" font-size="6" data-sira="9">4</text>
+  <g class="baglantilar" stroke="none">
+    <circle class="baglanti" cx="8" cy="0" r="0" data-baglanti="ust" data-uc="ust1"/>
+    <circle class="baglanti" cx="8" cy="48" r="0" data-baglanti="alt" data-uc="alt1"/>
+    <circle class="baglanti" cx="24" cy="0" r="0" data-baglanti="ust" data-uc="ust2"/>
+    <circle class="baglanti" cx="24" cy="48" r="0" data-baglanti="alt" data-uc="alt2"/>
+    <circle class="baglanti" cx="40" cy="0" r="0" data-baglanti="ust" data-uc="ust3"/>
+    <circle class="baglanti" cx="40" cy="48" r="0" data-baglanti="alt" data-uc="alt3"/>
+    <circle class="baglanti" cx="56" cy="0" r="0" data-baglanti="ust" data-uc="ust4"/>
+    <circle class="baglanti" cx="56" cy="48" r="0" data-baglanti="alt" data-uc="alt4"/>
+  </g>
+</svg>

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" class="iec iec-bobin" data-sembol="bobin" data-tur="iec" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" font-family="Osifont, ISOCPEUR, Arial, sans-serif" overflow="visible">
+  <title>Röle / kontaktör bobini</title>
+  <desc>IEC 60617 bobin: dikdörtgen 20x10, uçlar A1 üstte, A2 altta.</desc>
+  <path d="M24 0V19" data-sira="1" vector-effect="non-scaling-stroke"/>
+  <path d="M14 19H34V29H14Z" data-sira="2" vector-effect="non-scaling-stroke"/>
+  <path d="M24 29V48" data-sira="3" vector-effect="non-scaling-stroke"/>
+  <text class="uc-no" data-uc="ust" x="21" y="8" text-anchor="end" font-size="6" data-sira="9">A1</text>
+  <text class="uc-no" data-uc="alt" x="21" y="46" text-anchor="end" font-size="6" data-sira="9">A2</text>
+  <g class="baglantilar" stroke="none">
+    <circle class="baglanti" cx="24" cy="0" r="0" data-baglanti="ust" data-uc="ust"/>
+    <circle class="baglanti" cx="24" cy="48" r="0" data-baglanti="alt" data-uc="alt"/>
+  </g>
+</svg>

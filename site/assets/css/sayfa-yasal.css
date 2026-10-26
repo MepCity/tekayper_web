@@ -1,0 +1,144 @@
+/* sayfa-yasal.css: Föy 9, Notlar (kvkk.php, paket P9).
+   Okuma düzeni. Sol kenar: föy başlığı NOTLAR ve not dizini (çizimdeki NOTLAR alanı gibi numaralı).
+   Metin: tek sütun, 62ch. Not numaraları Osifont ile kenar boşluğuna asılır. İmza hareketi yok. */
+
+.yasal { padding-top: clamp(2rem, 1rem + 3vw, 4.5rem); }
+.yasal__izgara { row-gap: var(--s-7); align-items: start; }
+
+/* ---------------------------------------------------------------- sol kenar: föy başlığı + dizin */
+.yasal__kenar {
+  grid-column: 1 / span 2;
+  position: sticky;
+  top: calc(var(--c-ust) + var(--s-6));
+  display: grid;
+  gap: var(--s-4);
+}
+.yasal__foy {
+  padding-bottom: var(--s-2);
+  border-bottom: var(--cz) solid var(--cizgi-renk);
+  font-size: var(--t-not);
+}
+.yasal__dizin { display: grid; margin: 0; }
+.yasal__dizin li + li { border-top: var(--cz-ince) solid var(--kil); }
+.yasal__dizin a {
+  display: grid;
+  grid-template-columns: 1.75rem 1fr;
+  align-items: baseline;
+  min-height: 44px;
+  padding-block: 10px;
+  font-size: var(--t-sm);
+  font-stretch: 84%;
+  line-height: 1.3;
+  text-decoration: none;
+  color: var(--metin-2);
+}
+.yasal__dizin-no { font-family: var(--f-cizim); font-size: var(--t-not); letter-spacing: 0; color: var(--metin); }
+@media (hover: hover) and (pointer: fine) {
+  .yasal__dizin a:hover { color: var(--metin); }
+  .yasal__dizin a:hover span:last-child { background: linear-gradient(var(--isaret), var(--isaret)) 0 72% / 100% 0.46em no-repeat; }
+}
+
+/* ---------------------------------------------------------------- metin sütunu */
+.yasal__metin {
+  grid-column: 3 / span 5;
+  max-width: var(--olcu);
+  counter-reset: none;
+}
+.yasal__bas { display: grid; gap: var(--s-4); margin-bottom: var(--s-8); }
+.yasal__bas h1 { font-size: clamp(2.25rem, 1.5rem + 2.4vw, 3.75rem); max-width: 18ch; }
+.yasal__alt { font-size: var(--t-md); max-width: 46ch; }
+
+/* taslak notu: revizyon bayrağı. Sarı bant yalnızca mürekkep etiketin altında, yazılı gerekçeyle */
+.yasal__taslak {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--s-2) var(--s-3);
+  margin-bottom: var(--s-7);
+  padding: var(--s-4) var(--s-5) var(--s-4) var(--s-4);
+  border: var(--cz) solid var(--cizgi-renk);
+  background: var(--hucre-zemin);
+  font-size: var(--t-sm);
+  line-height: 1.45;
+}
+.yasal__taslak-etiket {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-2);
+  font-family: var(--f-cizim);
+  font-size: var(--t-not);
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+.yasal__revizyon { flex: none; }
+.yasal__taslak-yazi { background: linear-gradient(var(--isaret), var(--isaret)) 0 72% / 100% 0.5em no-repeat; padding-inline: 0.08em; }
+
+/* notlar */
+.not { position: relative; scroll-margin-top: calc(var(--c-ust) + 24px); }
+.not + .not { margin-top: var(--s-7); }
+.not__baslik {
+  position: relative;
+  margin-bottom: var(--s-4);
+  font-size: var(--t-h3);
+  font-weight: 560;
+  font-stretch: 82%;
+  line-height: 1.2;
+}
+.not__no {
+  position: absolute;
+  right: calc(100% + var(--s-5));
+  top: 0.1em;
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  border: var(--cz) solid var(--cizgi-renk);
+  font-family: var(--f-cizim);
+  font-size: var(--t-not);
+  font-weight: 400;
+  font-stretch: normal;
+  letter-spacing: 0;
+  line-height: 1;
+}
+.not p + p { margin-top: var(--s-4); }
+.not__liste { margin: 0; padding-left: 1.1em; display: grid; gap: var(--s-2); }
+.not__liste li::marker { content: "- "; }
+
+/* tarayıcı belleği tablosu: antet hücresi dili (1 px kılçizgi, Osifont sütun başlıkları) */
+.yasal__tablo {
+  width: 100%;
+  margin-top: var(--s-5);
+  border: var(--cz-ince) solid var(--kil);
+  font-size: var(--t-sm);
+  font-stretch: 84%;
+  line-height: 1.4;
+  table-layout: fixed;
+}
+.yasal__tablo th, .yasal__tablo td { padding: 10px 12px; border: var(--cz-ince) solid var(--kil); text-align: left; vertical-align: top; font-weight: 400; }
+.yasal__tablo thead th {
+  background: var(--hucre-zemin);
+  font-family: var(--f-cizim);
+  font-size: var(--t-xs);
+  font-stretch: normal;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+.yasal__tablo tbody th { font-size: var(--t-not); overflow-wrap: anywhere; }
+.yasal__tablo th:first-child { width: 28%; }
+
+/* ---------------------------------------------------------------- tablet ve telefon */
+@media (max-width: 1023.98px) {
+  .yasal__kenar { grid-column: 1 / span 2; }
+  .yasal__metin { grid-column: 3 / -1; }
+  .not__no { position: static; display: inline-grid; width: 1.75rem; height: 1.75rem; margin-right: var(--s-3); vertical-align: 0.1em; }
+}
+@media (max-width: 767.98px) {
+  .yasal__izgara { row-gap: var(--s-6); }
+  .yasal__kenar { position: static; grid-column: 1 / -1; }
+  .yasal__dizin { display: none; }
+  .yasal__metin { grid-column: 1 / -1; }
+  .yasal__bas { margin-bottom: var(--s-7); }
+  .yasal__tablo { font-size: var(--t-not); }
+  .yasal__tablo th, .yasal__tablo td { padding: 8px 6px; }
+  .yasal__tablo th:first-child { width: 30%; }
+}

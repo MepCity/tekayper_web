@@ -1,0 +1,217 @@
+/* Ortak bileşenler: düğmeler, çapraz referans, ipucu, kesme noktası, vurgu taraması, cihaz etiketi,
+   revizyon üçgeni, kılçizgi tablo, belge eki. */
+
+/* ---------------------------------------------------------------- düğmeler */
+.dugme {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 48px;
+  padding: 0 20px;
+  border: 0;
+  border-radius: 0;
+  font-family: var(--f-metin);
+  font-size: var(--t-md);
+  font-weight: 560;
+  font-stretch: 85%;
+  line-height: 1;
+  letter-spacing: 0;
+  text-decoration: none;
+  white-space: nowrap;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform var(--d-mikro) var(--e-ui), box-shadow var(--d-mikro) var(--e-ui);
+}
+.dugme--kucuk { min-height: 40px; padding-inline: 16px; font-size: var(--t-sm); }
+
+/* birincil: mürekkep plaka; üzerine gelince etiketin altından işaret kalemi geçer, plaka mürekkep kalır */
+.dugme--birincil { background: var(--plaka); color: var(--plaka-metin); }
+.dugme__etiket { position: relative; display: inline-block; }
+.dugme--birincil .dugme__etiket::after {
+  content: attr(data-etiket);
+  position: absolute;
+  inset: -4px -6px;
+  padding: 4px 6px;
+  background: var(--isaret);
+  color: var(--murekkep);
+  white-space: nowrap;
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path var(--d-normal) var(--e-vurgu);
+}
+@media (hover: hover) and (pointer: fine) {
+  .dugme--birincil:hover .dugme__etiket::after { clip-path: inset(0 0 0 0); }
+  .dugme--birincil:hover { background: var(--plaka-uzeri); }
+}
+.dugme--birincil:focus-visible .dugme__etiket::after { clip-path: inset(0 0 0 0); }
+.dugme--birincil:active { transform: translateY(1px); box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.45); }
+.dugme--birincil:focus-visible { outline: 2px solid var(--odak); outline-offset: 3px; }
+[data-hareket="az"] .dugme--birincil .dugme__etiket::after { transition: none; }
+
+.dugme[disabled], .dugme[aria-disabled="true"] {
+  background: var(--n-300);
+  color: var(--n-600);
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+.dugme[disabled] .dugme__etiket::after, .dugme[aria-disabled="true"] .dugme__etiket::after { display: none; }
+.dugme.is-bekliyor { cursor: progress; }
+.dugme.is-bekliyor .dugme__etiket { opacity: 0.6; }
+
+/* ikincil: altı çizili metin bağlantısı + Osifont çapraz eki (/4). Ok yok. */
+.dugme--ikincil {
+  min-height: 44px;
+  padding: 0;
+  background: none;
+  color: var(--metin);
+  font-weight: 480;
+  font-stretch: 92%;
+}
+.dugme--ikincil .dugme__etiket {
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 0.18em;
+}
+@media (hover: hover) and (pointer: fine) {
+  .dugme--ikincil:hover .dugme__etiket { text-decoration-thickness: 3px; }
+  .dugme--ikincil:hover .capraz__ref { background-size: 100% 0.46em; }
+}
+
+/* ---------------------------------------------------------------- çapraz referans */
+.capraz {
+  text-decoration-line: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 0.18em;
+  transition: text-decoration-thickness var(--d-mikro) var(--e-ui);
+}
+.capraz__ref {
+  display: inline-block;
+  margin-left: 0.32em;
+  padding-inline: 0.12em;
+  white-space: nowrap;
+  font-family: var(--f-cizim);
+  font-size: 0.86em;
+  font-weight: 400;
+  font-stretch: normal;
+  letter-spacing: 0;
+  text-decoration: none;
+  background: linear-gradient(var(--isaret), var(--isaret)) 0 72% / 0 0.46em no-repeat;
+  transition: background-size var(--d-normal) var(--e-vurgu);
+}
+.capraz[aria-current="page"] .capraz__ref { background-size: 100% 0.46em; }
+@media (hover: hover) and (pointer: fine) {
+  .capraz:hover { text-decoration-thickness: 3px; }
+  .capraz:hover .capraz__ref { background-size: 100% 0.46em; }
+}
+.capraz:focus-visible .capraz__ref { background-size: 100% 0.46em; }
+[data-zemin="ozalit"] .capraz__ref { background-image: linear-gradient(var(--isaret), var(--isaret)); background-position: 0 100%; background-size: 0 2px; }
+[data-zemin="ozalit"] .capraz:hover .capraz__ref { background-size: 100% 2px; }
+
+/* tam tanım ipucu (400 ms sonra, yalnızca ince işaretçi) */
+.capraz-ipucu {
+  position: fixed;
+  z-index: calc(var(--z-ust) + 5);
+  top: 0;
+  left: 0;
+  padding: 5px 8px 4px;
+  border: var(--cz-ince) solid var(--cizgi-renk);
+  background: var(--kabarik);
+  color: var(--murekkep);
+  box-shadow: var(--g-orta);
+  font-family: var(--f-cizim);
+  font-size: var(--t-xs);
+  letter-spacing: 0;
+  line-height: 1.2;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--d-mikro) var(--e-ui);
+}
+.capraz-ipucu.is-acik { opacity: 1; }
+[data-zemin="ozalit"] .capraz-ipucu { background: var(--kagit); border-color: var(--kagit); }
+
+/* ---------------------------------------------------------------- vurgu taraması (çapraz hedef başlığı) */
+@property --vurgu-renk { syntax: "<color>"; inherits: false; initial-value: rgba(249, 178, 51, 0); }
+.vurgu-bant {
+  --vurgu-renk: #F9B233;
+  background-image: linear-gradient(var(--vurgu-renk), var(--vurgu-renk));
+  background-repeat: no-repeat;
+  background-position: 0 72%;
+  background-size: 0% 0.46em;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+.vurgu-bant.is-tarama { background-size: 100% 0.46em; transition: background-size var(--d-normal) var(--e-vurgu); }
+.vurgu-bant.is-sonme { background-size: 100% 0.46em; --vurgu-renk: rgba(249, 178, 51, 0); transition: --vurgu-renk 400ms linear; }
+[data-hareket="az"] .vurgu-bant.is-tarama { transition: none; }
+
+/* ---------------------------------------------------------------- kesme noktası */
+.kesme-noktasi {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  color: var(--metin);
+  text-decoration: none;
+}
+.kesme-noktasi__sembol { width: 48px; height: auto; flex: none; }
+.kesme-noktasi--giden { flex-direction: row-reverse; }
+.kesme-noktasi__ref {
+  font-family: var(--f-cizim);
+  font-size: var(--t-not);
+  letter-spacing: 0;
+  padding-inline: 0.12em;
+  background: linear-gradient(var(--isaret), var(--isaret)) 0 72% / 0 0.46em no-repeat;
+  transition: background-size var(--d-normal) var(--e-vurgu);
+}
+@media (hover: hover) and (pointer: fine) { .kesme-noktasi:hover .kesme-noktasi__ref { background-size: 100% 0.46em; } }
+.kesme-noktasi:focus-visible .kesme-noktasi__ref { background-size: 100% 0.46em; }
+
+/* ---------------------------------------------------------------- çizim katmanı yazıları */
+.cihaz { font-family: var(--f-cizim); font-size: var(--t-not); letter-spacing: 0; white-space: nowrap; }
+.alan-etiketi { font-family: var(--f-cizim); font-size: var(--t-xs); letter-spacing: 0; text-transform: uppercase; }
+
+/* revizyon üçgeni: doğrulanmamış değer ya da hata işareti */
+.revizyon {
+  display: inline-block;
+  width: 15px;
+  height: 13px;
+  vertical-align: -1px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 15 13'%3E%3Cpath d='M7.5 1 14 12H1z' fill='none' stroke='%231B1D1F' stroke-width='1.5' stroke-linejoin='miter'/%3E%3Cpath d='M7.5 5v3.5M7.5 9.6v1' stroke='%231B1D1F' stroke-width='1.5'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+/* ---------------------------------------------------------------- kılçizgi tablo (BOM, model tablosu) */
+.tablo-izgara {
+  display: grid;
+  grid-template-columns: var(--tablo-sutunlar, repeat(4, minmax(0, 1fr)));
+  gap: 1px;
+  background: var(--kil);
+  border: 1px solid var(--kil);
+  font-size: var(--t-sm);
+  font-stretch: 78%;
+  font-variant-numeric: tabular-nums;
+}
+.tablo-izgara > * { background: var(--zemin); padding: 10px 12px; min-width: 0; }
+.tablo-izgara > .tablo-izgara__baslik {
+  font-family: var(--f-cizim);
+  font-size: var(--t-xs);
+  font-stretch: normal;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  background: var(--hucre-zemin);
+}
+.tablo-izgara--zebra > .is-cift { background: var(--hucre-zemin); }
+
+/* ---------------------------------------------------------------- belge eki (gerçek fotoğraf, katalog sayfası) */
+.belge-eki {
+  border: var(--cz-ince) solid var(--cizgi-renk);
+  background: var(--kabarik);
+  box-shadow: var(--g-dusuk), var(--g-orta);
+}
+
+/* ---------------------------------------------------------------- not bloğu (çizim notları) */
+.notlar__baslik { font-family: var(--f-cizim); font-size: var(--t-not); letter-spacing: 0; text-transform: uppercase; font-weight: 400; }
+.notlar__liste { counter-reset: not; margin: 0; padding: 0; list-style: none; }
+.notlar__liste > li { counter-increment: not; display: grid; grid-template-columns: 2.25rem minmax(0, 1fr); gap: 4px; }
+.notlar__liste > li::before { content: counter(not) "."; font-family: var(--f-cizim); font-size: var(--t-not); padding-top: 0.2em; }

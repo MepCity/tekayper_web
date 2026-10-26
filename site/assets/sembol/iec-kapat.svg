@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" class="iec iec-kapat" data-sembol="kapat" data-tur="ui" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" font-family="Osifont, ISOCPEUR, Arial, sans-serif" overflow="visible">
+  <title>Kapat</title>
+  <desc>Kapatma: çarpı.</desc>
+  <path d="M14 14L34 34" data-sira="1" vector-effect="non-scaling-stroke"/>
+  <path d="M34 14L14 34" data-sira="2" vector-effect="non-scaling-stroke"/>
+</svg>

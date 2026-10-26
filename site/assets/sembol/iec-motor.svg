@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" class="iec iec-motor" data-sembol="motor" data-tur="iec" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" font-family="Osifont, ISOCPEUR, Arial, sans-serif" overflow="visible">
+  <title>Motor, 3 fazlı</title>
+  <desc>Daire içinde M ve 3~. M harfi kendi grubunda (motor__m) döndürülebilir; alt bağlantı mil (mekanik).</desc>
+  <path d="M24 0V12" data-sira="1" vector-effect="non-scaling-stroke"/>
+  <path d="M24 12A14 14 0 1 1 24 40A14 14 0 1 1 24 12" data-sira="2" vector-effect="non-scaling-stroke"/>
+  <g class="motor__m" data-merkez="24 23.5">
+  <path d="M21.33 27.5V19.5L24 24.3L26.67 19.5V27.5" data-sira="3" vector-effect="non-scaling-stroke"/>
+  </g>
+  <path d="M20.81 30.81C21.1 30.48 21.54 30.3 22.06 30.3C22.86 30.3 23.3 30.81 23.3 31.4C23.3 31.99 22.79 32.39 21.98 32.39H21.54M21.98 32.39C22.94 32.39 23.52 32.87 23.52 33.53C23.52 34.26 22.94 34.7 22.06 34.7C21.47 34.7 20.96 34.48 20.59 34.11M24.48 32.94C24.84 32.13 25.43 32.06 25.94 32.5C26.46 32.94 27.04 32.87 27.41 32.06" data-sira="4" vector-effect="non-scaling-stroke"/>
+  <g class="baglantilar" stroke="none">
+    <circle class="baglanti" cx="24" cy="0" r="0" data-baglanti="ust" data-uc="ust"/>
+    <circle class="baglanti" cx="24" cy="40" r="0" data-baglanti="alt" data-uc="mil"/>
+  </g>
+</svg>

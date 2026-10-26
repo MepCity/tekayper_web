@@ -1,0 +1,166 @@
+/* Tekayper ŞEMA: tasarım değişkenleri (design-dna.json). Tek açık tema; kataloglar.php özalit zemin. */
+
+@font-face {
+  font-family: "ChillDIN";
+  src: url("../fonts/chilldin-vf.woff2") format("woff2-variations"), url("../fonts/chilldin-vf.woff2") format("woff2");
+  font-weight: 325 700;
+  font-stretch: 70% 100%;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Osifont";
+  src: url("../fonts/osifont.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Osifont";
+  src: url("../fonts/osifont-italic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+/* Yazı yüklenene kadar yedek: ölçüleri ChillDIN'e yakın tutulur (CLS). */
+@font-face {
+  font-family: "ChillDIN yedek";
+  src: local("DIN Alternate"), local("Bahnschrift"), local("Arial Narrow"), local("Arial");
+  size-adjust: 94%;
+  ascent-override: 96%;
+  descent-override: 24%;
+}
+
+:root {
+  /* renk: kağıt ve mürekkep */
+  --kagit: #F1F2EE;
+  --murekkep: #1B1D1F;
+  --isaret: #F9B233;          /* işaret kalemi sarısı: hep mürekkebin altında */
+  --isaret-koyu: #B9800A;     /* kağıt üzerinde 3:1 gereken sarı çizgi */
+  --yapi: #3EB8EB;            /* yapı çizgisi camgöbeği: yalnızca süs */
+  --yapi-yazi: #0F6F94;       /* metin düzeyinde camgöbeği */
+  --ozalit: #16324A;
+
+  --n-100: #E6E8E3;           /* antet hücresi, giriş alanı, BOM zebra */
+  --n-200: #D9DCD6;           /* basılı / seçili hücre */
+  --n-300: #B9BEC2;           /* pasif kenar */
+  --n-400: #8E959C;           /* kılçizgi, cetvel çentiği (metin değil) */
+  --n-600: #4B5157;           /* ikincil metin (7,2:1) */
+  --n-700: #2C3034;           /* mürekkep plaka üzeri */
+  --kabarik: #F7F8F5;
+
+  --basari: #2E6E45;
+  --hata: #B8281E;
+  --bilgi: #0F6F94;
+
+  /* anlamsal (özalit zeminde yeniden tanımlanır) */
+  --zemin: var(--kagit);
+  --metin: var(--murekkep);
+  --metin-2: var(--n-600);
+  --cizgi-renk: var(--murekkep);
+  --kil: var(--n-400);
+  --hucre-zemin: var(--n-100);
+  --hucre-secili: var(--n-200);
+  --plaka: var(--murekkep);
+  --plaka-metin: var(--kagit);
+  --plaka-uzeri: var(--n-700);
+  --odak: var(--murekkep);
+
+  /* yazı aileleri */
+  --f-metin: "ChillDIN", "ChillDIN yedek", "DIN Alternate", "Bahnschrift", "Arial Narrow", sans-serif;
+  --f-cizim: "Osifont", "ISOCPEUR", Arial, sans-serif;
+
+  /* yazı ölçeği (akışkan) */
+  --t-xs: 0.8125rem;                                    /* 13 Osifont alan etiketi */
+  --t-not: 0.875rem;                                    /* 14 Osifont açıklama */
+  --t-sm: 0.9375rem;                                    /* 15 body_small */
+  --t-md: 1.0625rem;                                    /* 17 body */
+  --t-lg: clamp(1.25rem, 1.1rem + 0.5vw, 1.5rem);       /* heading_3 */
+  --t-xl: clamp(1.75rem, 1.3rem + 1.6vw, 2.75rem);      /* heading_2 */
+  --t-2xl: clamp(2.5rem, 1.6rem + 3vw, 4.25rem);        /* heading_1 */
+  --t-3xl: clamp(3.25rem, 2rem + 4.2vw, 6.5rem);        /* display */
+  --t-4xl: clamp(3.5rem, 2rem + 6vw, 8.5rem);           /* ürünler afişi */
+  --t-govde: var(--t-md);
+  --t-kucuk: var(--t-sm);
+  --t-h3: var(--t-lg);
+  --t-h2: var(--t-xl);
+  --t-h1: var(--t-2xl);
+  --t-display: var(--t-3xl);
+
+  /* boşluk (4 px taban) */
+  --s-1: 4px; --s-2: 8px; --s-3: 12px; --s-4: 16px; --s-5: 24px; --s-6: 32px;
+  --s-7: 48px; --s-8: 64px; --s-9: 96px; --s-10: 128px; --s-11: 192px;
+  --bant-pad: clamp(3rem, 2rem + 4vw, 8rem);
+
+  /* çizgi kalınlıkları (ISO 128) */
+  --cz-kalin: 2px;   /* 0,5 mm: çerçeve, ana güç hattı */
+  --cz: 1.5px;       /* 0,35 mm: semboller, hücreler */
+  --cz-ince: 1px;    /* 0,25 mm: iç çerçeve, ikincil */
+
+  /* çerçeve geometrisi */
+  --c-dis: 12px;                 /* dış çizginin ekran kenarına uzaklığı */
+  --c-ust-satir: 52px;           /* başlık satırı */
+  --c-cetvel: 20px;              /* cetvel bandı */
+  --c-sol: calc(var(--c-dis) + var(--cz-kalin) + var(--c-cetvel) + var(--cz-ince));
+  --c-sag: calc(var(--c-dis) + var(--cz-kalin));
+  --c-ust: calc(var(--c-dis) + var(--cz-kalin) + var(--c-ust-satir) + var(--c-cetvel) + var(--cz-ince));
+  --c-alt: calc(var(--c-dis) + var(--cz-kalin));
+
+  /* ızgara */
+  --sutun: 8;
+  --oluk: 24px;
+  --kenar: 24px;
+  --sayfa-max: 1440px;
+  --olcu: 62ch;
+
+  /* gölge */
+  --g-dusuk: 0 1px 0 rgba(27, 29, 31, 0.08);
+  --g-orta: 0 14px 28px -16px rgba(27, 29, 31, 0.22);
+  --g-yuksek: 0 28px 60px -24px rgba(27, 29, 31, 0.30);
+
+  /* hareket */
+  --e-ui: cubic-bezier(0.23, 1, 0.32, 1);
+  --e-foy: cubic-bezier(0.76, 0, 0.24, 1);
+  --e-vurgu: cubic-bezier(0.65, 0, 0.35, 1);
+  --d-mikro: 140ms;
+  --d-normal: 280ms;
+  --d-makro: 640ms;
+  --d-foy: 520ms;
+
+  --z-cerceve: 50;
+  --z-ust: 60;
+  --z-doku: 90;
+}
+
+@media (max-width: 1023.98px) {
+  :root { --sutun: 6; --oluk: 20px; --kenar: 20px; }
+}
+@media (max-width: 767.98px) {
+  :root {
+    --sutun: 4; --oluk: 16px; --kenar: 16px;
+    --c-dis: 8px;
+    --cz-kalin-cerceve: 1px;
+    --c-ust-satir: 52px;
+    --c-cetvel: 16px;
+    --c-sol: calc(var(--c-dis) + 1px);
+    --c-sag: calc(var(--c-dis) + 1px);
+    --c-ust: calc(var(--c-dis) + 1px + var(--c-ust-satir) + var(--c-cetvel) + var(--cz-ince));
+    --c-alt: calc(var(--c-dis) + 1px);
+    --bant-pad: clamp(2.25rem, 1.5rem + 4vw, 3.5rem);
+  }
+}
+
+/* Özalit zemin (kataloglar.php): kağıt rengi mürekkep, çerçeve kağıt renginde. */
+[data-zemin="ozalit"] {
+  --zemin: var(--ozalit);
+  --metin: var(--kagit);
+  --metin-2: #C9D3DC;
+  --cizgi-renk: var(--kagit);
+  --kil: #5D7487;
+  --hucre-zemin: #1E3D57;
+  --hucre-secili: #26496A;
+  --plaka: var(--kagit);
+  --plaka-metin: var(--ozalit);
+  --plaka-uzeri: #DDE3E8;
+  --odak: var(--kagit);
+}

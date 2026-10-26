@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" class="iec iec-analizor" data-sembol="analizor" data-tur="iec" data-kontrol="evet" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" font-family="Osifont, ISOCPEUR, Arial, sans-serif" overflow="visible">
+  <title>Enerji analizörü (akım trafosu ve ölçü cihazı)</title>
+  <desc>Tek hat: hat üzerinde akım trafosu halkası, ölçü kablosu ile toplayıcı ölçü cihazı (üst bantlı kare, Wh). KONTROL: Analizörün toplayıcı ölçü aleti (enerji sayacı) kutusuyla gösterimi ve akım trafosu halkası onaylanmalı.</desc>
+  <path d="M12 0V48" data-sira="1" vector-effect="non-scaling-stroke"/>
+  <path d="M12 19.5A4.5 4.5 0 1 1 12 28.5A4.5 4.5 0 1 1 12 19.5" data-sira="2" vector-effect="non-scaling-stroke"/>
+  <path d="M16.5 24H24" data-sira="3" vector-effect="non-scaling-stroke"/>
+  <path d="M24 12H44V36H24Z" data-sira="4" vector-effect="non-scaling-stroke"/>
+  <path d="M24 17H44" data-sira="5" vector-effect="non-scaling-stroke"/>
+  <path d="M29.15 24L30.35 30L31.65 25.6L32.95 30L34.15 24M35.45 24V30M35.45 27.4C35.95 26.6 36.65 26.2 37.45 26.2C38.45 26.2 38.85 26.9 38.85 27.8V30" data-sira="6" vector-effect="non-scaling-stroke"/>
+  <g class="baglantilar" stroke="none">
+    <circle class="baglanti" cx="12" cy="0" r="0" data-baglanti="ust" data-uc="ust"/>
+    <circle class="baglanti" cx="12" cy="48" r="0" data-baglanti="alt" data-uc="alt"/>
+  </g>
+</svg>

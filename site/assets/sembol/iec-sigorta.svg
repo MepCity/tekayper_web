@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" class="iec iec-sigorta" data-sembol="sigorta" data-tur="iec" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" font-family="Osifont, ISOCPEUR, Arial, sans-serif" overflow="visible">
+  <title>Sigorta</title>
+  <desc>IEC 60617 sigorta: hattın üzerinde dikdörtgen, hat dikdörtgenin içinden geçer.</desc>
+  <path d="M24 0V48" data-sira="1" vector-effect="non-scaling-stroke"/>
+  <path d="M20 14H28V34H20Z" data-sira="2" vector-effect="non-scaling-stroke"/>
+  <g class="baglantilar" stroke="none">
+    <circle class="baglanti" cx="24" cy="0" r="0" data-baglanti="ust" data-uc="ust"/>
+    <circle class="baglanti" cx="24" cy="48" r="0" data-baglanti="alt" data-uc="alt"/>
+  </g>
+</svg>

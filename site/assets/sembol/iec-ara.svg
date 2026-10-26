@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" class="iec iec-ara" data-sembol="ara" data-tur="ui" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" font-family="Osifont, ISOCPEUR, Arial, sans-serif" overflow="visible">
+  <title>Ara</title>
+  <desc>Arama: daire ve sap.</desc>
+  <path d="M21 10A11 11 0 1 1 21 32A11 11 0 1 1 21 10" data-sira="1" vector-effect="non-scaling-stroke"/>
+  <path d="M29 29L39 39" data-sira="2" vector-effect="non-scaling-stroke"/>
+</svg>

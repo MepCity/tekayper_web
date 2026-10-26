@@ -1,0 +1,259 @@
+/* sayfa-yok.css: Föy 0, Föy yok (404.php, paket P9).
+   Sol üstten çizilen hat, 7. sütunun ortasında aşağı döner ve kopuk bir kesme noktasında "/?" ile biter.
+   Ok föy listesine bakar. Listeden bir föy seçilince (üzerine gelme, odak) kopukluk kapanır, hat
+   enerjilenir (işaret kalemi bandı mürekkebin altında) ve kesme noktası o föyün numarasını alır.
+   Çizgiler HTML/CSS ile: genişliğe göre akar, kalınlıklar ISO 128 (2 px ana hat). */
+
+.yok { padding-block: clamp(2rem, 1rem + 2.5vw, 3.5rem) var(--bant-pad); }
+.yok__izgara { row-gap: 0; }
+
+/* ---------------------------------------------------------------- sahne */
+.yok__ust {
+  /* 7. sütunun ortası (8 sütun) */
+  --x: calc((100% - 7 * var(--oluk)) / 8 * 6.5 + 6 * var(--oluk));
+  --ok: 24px;           /* ok yüksekliği; ucu sahnenin alt kenarında */
+  --kopuk: 18px;        /* hat ile ok arasındaki kopukluk */
+  --ref-boy: clamp(4rem, 2.4rem + 4.4vw, 7.5rem);
+  position: relative;
+  grid-column: 1 / -1;
+  padding-top: var(--s-7);
+  padding-bottom: calc(var(--s-9) + var(--s-6));
+  padding-right: calc(100% - var(--x) + var(--s-7));
+}
+.yok__cizim { position: absolute; inset: 0; pointer-events: none; }
+
+.yok__baslangic {
+  position: absolute;
+  left: -3.5px;
+  top: -2.5px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--metin);
+}
+.yok__tel { position: absolute; background: none; }
+.yok__tel::after { content: ""; position: absolute; inset: 0; background: var(--metin); }
+.yok__tel--yatay { left: 0; top: 0; width: calc(var(--x) + var(--cz-kalin) / 2); height: var(--cz-kalin); transform-origin: 0 50%; }
+.yok__tel--dusey {
+  left: var(--x);
+  top: 0;
+  bottom: calc(var(--ok) + var(--kopuk));
+  width: var(--cz-kalin);
+  margin-left: calc(var(--cz-kalin) / -2);
+  transform-origin: 50% 0;
+}
+
+/* enerji bandı: 7 px sarı, mürekkebin altında */
+.yok__enerji {
+  position: absolute;
+  background: var(--isaret);
+  mix-blend-mode: multiply;
+  transition: transform 260ms linear;
+}
+.yok__tel--yatay .yok__enerji { left: 0; right: 0; top: -2.5px; bottom: -2.5px; transform: scaleX(0); transform-origin: 0 50%; }
+.yok__tel--dusey .yok__enerji { top: 0; bottom: 0; left: -2.5px; right: -2.5px; transform: scaleY(0); transform-origin: 50% 0; transition-delay: 0ms; }
+
+/* kopukluk: hat ile ok arasında boşluk ve iki eğik çentik (kırık hat) */
+.yok__kopuk {
+  position: absolute;
+  left: var(--x);
+  bottom: var(--ok);
+  width: 14px;
+  height: var(--kopuk);
+  margin-left: -7px;
+}
+.yok__kopuk::before, .yok__kopuk::after {
+  content: "";
+  position: absolute;
+  left: 1px;
+  width: 12px;
+  height: var(--cz);
+  background: var(--metin);
+  transform: rotate(-30deg);
+  transition: opacity var(--d-mikro) var(--e-ui);
+}
+.yok__kopuk::before { top: 3px; }
+.yok__kopuk::after { bottom: 3px; }
+.yok__kopuk-cizgi {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: var(--cz-kalin);
+  margin-left: calc(var(--cz-kalin) / -2);
+  background: var(--metin);
+  transform: scaleY(0);
+  transform-origin: 50% 0;
+  transition: transform 120ms linear, box-shadow 120ms linear;
+}
+
+/* uç: ok (içi boş = çözülmemiş referans) ve "/?" */
+.yok__uc {
+  position: absolute;
+  left: var(--x);
+  bottom: 0;
+  display: block;
+}
+.yok__ok {
+  position: absolute;
+  left: calc(var(--ok) / -2);
+  bottom: 0;
+  width: var(--ok);
+  height: var(--ok);
+  max-width: none;
+  color: var(--metin);
+}
+.yok__ok path { transition: fill var(--d-mikro) var(--e-ui); }
+.yok__ref {
+  position: absolute;
+  left: calc(var(--ok) / 2 + var(--s-3));
+  bottom: -0.16em;
+  font-family: var(--f-cizim);
+  font-size: var(--ref-boy);
+  line-height: 1;
+  letter-spacing: 0;
+  white-space: nowrap;
+  color: var(--metin);
+}
+.yok__ref-ad {
+  position: absolute;
+  right: calc(var(--ok) / 2 + var(--s-3));
+  bottom: 2px;
+  font-family: var(--f-cizim);
+  font-size: var(--t-not);
+  line-height: 1.2;
+  white-space: nowrap;
+  text-align: right;
+  color: var(--metin-2);
+  opacity: 0;
+  transition: opacity var(--d-mikro) var(--e-ui);
+}
+
+/* bağlı durum: bir föy seçildi */
+.yok__ust.is-bagli .yok__kopuk-cizgi { transform: scaleY(1); box-shadow: 0 0 0 2.5px var(--isaret); transition-delay: 400ms, 400ms; }
+.yok__ust.is-bagli .yok__kopuk::before,
+.yok__ust.is-bagli .yok__kopuk::after { opacity: 0; }
+.yok__ust.is-bagli .yok__ok path { fill: currentColor; }
+.yok__ust.is-bagli .yok__tel--yatay .yok__enerji { transform: scaleX(1); }
+.yok__ust.is-bagli .yok__tel--dusey .yok__enerji { transform: scaleY(1); transition-delay: 220ms; transition-duration: 180ms; }
+.yok__ust.is-bagli .yok__ref-ad { opacity: 1; }
+/* bağ koparken bant hemen söner (enerji önde koşmaz) */
+.yok__ust:not(.is-bagli) .yok__enerji { transition-duration: 120ms; transition-delay: 0ms; }
+
+/* ---------------------------------------------------------------- metin */
+.yok__adres {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-1) var(--s-3);
+  margin-bottom: var(--s-7);
+  font-family: var(--f-cizim);
+  font-size: var(--t-not);
+  letter-spacing: 0;
+  line-height: 1.35;
+}
+.yok__adres-etiket { color: var(--metin-2); }
+.yok__adres-yol { overflow-wrap: anywhere; }
+.yok__baslik { max-width: 12ch; margin-bottom: var(--s-5); }
+.yok__metin { max-width: 40ch; font-size: var(--t-lg); line-height: 1.45; color: var(--metin); }
+
+/* ---------------------------------------------------------------- föy listesi */
+.yok__liste {
+  grid-column: 3 / -1;
+  margin-top: var(--s-5);
+}
+.yok__liste-baslik {
+  margin-bottom: var(--s-4);
+  font-size: var(--t-h3);
+  font-weight: 560;
+  font-stretch: 82%;
+}
+.yok__tablo-bas,
+.yok__foy {
+  display: grid;
+  grid-template-columns: 4.5rem minmax(0, 1.25fr) minmax(0, 1.25fr) minmax(0, 0.9fr);
+  column-gap: var(--s-4);
+  align-items: baseline;
+}
+.yok__tablo-bas {
+  padding: 0 var(--s-4) var(--s-2);
+  border-bottom: var(--cz) solid var(--cizgi-renk);
+  font-family: var(--f-cizim);
+  font-size: var(--t-xs);
+  letter-spacing: 0;
+  text-transform: uppercase;
+  color: var(--metin-2);
+}
+.yok__tablo-bas > :last-child { justify-self: end; }
+.yok__foyler { margin: 0; }
+.yok__foyler li { border-bottom: var(--cz-ince) solid var(--kil); }
+.yok__foy {
+  min-height: 56px;
+  padding: 14px var(--s-4);
+  text-decoration: none;
+  transition: background-color var(--d-mikro) var(--e-ui);
+}
+.yok__foy-no {
+  font-family: var(--f-cizim);
+  font-size: var(--t-md);
+  letter-spacing: 0;
+  justify-self: start;
+  padding-inline: 0.08em;
+  background: linear-gradient(var(--isaret), var(--isaret)) 0 72% / 0 0.5em no-repeat;
+  transition: background-size var(--d-normal) var(--e-vurgu);
+}
+.yok__foy-menu { font-size: var(--t-md); font-weight: 560; font-stretch: 86%; }
+.yok__foy-ad { color: var(--metin-2); font-stretch: 90%; }
+.yok__foy-tanim { font-family: var(--f-cizim); font-size: var(--t-not); letter-spacing: 0; color: var(--metin-2); justify-self: end; }
+@media (hover: hover) and (pointer: fine) {
+  .yok__foy:hover { background: var(--hucre-zemin); }
+  .yok__foy:hover .yok__foy-no { background-size: 100% 0.5em; }
+}
+.yok__foy:focus-visible { outline-offset: -2px; background: var(--hucre-zemin); }
+.yok__foy:focus-visible .yok__foy-no { background-size: 100% 0.5em; }
+
+/* ---------------------------------------------------------------- çizim girişi (JS, tam hareket) */
+.js[data-hareket="tam"] .yok__ust:not(.is-cizildi) .yok__tel--yatay { transform: scaleX(0); }
+.js[data-hareket="tam"] .yok__ust:not(.is-cizildi) .yok__tel--dusey { transform: scaleY(0); }
+.js[data-hareket="tam"] .yok__ust:not(.is-cizildi) .yok__baslangic,
+.js[data-hareket="tam"] .yok__ust:not(.is-cizildi) .yok__kopuk,
+.js[data-hareket="tam"] .yok__ust:not(.is-cizildi) .yok__ok { opacity: 0; }
+.js[data-hareket="tam"] .yok__ust:not(.is-cizildi) .yok__ref { clip-path: inset(-0.3em 100% -0.3em -0.3em); }
+
+/* ---------------------------------------------------------------- tablet */
+@media (max-width: 1023.98px) {
+  .yok__ust {
+    /* 6 sütun: son sütunun ortası; "/?" okun soluna geçer */
+    --x: calc((100% - 5 * var(--oluk)) / 6 * 5.5 + 5 * var(--oluk));
+    padding-right: calc(100% - var(--x) + var(--s-5));
+    padding-bottom: calc(var(--ref-boy) + var(--s-7));
+  }
+  .yok__ref { left: auto; right: calc(var(--ok) / 2 + var(--s-3)); text-align: right; }
+  .yok__ref-ad { bottom: calc(var(--ref-boy) * 0.86); }
+  .yok__liste { grid-column: 1 / -1; }
+}
+
+/* ---------------------------------------------------------------- telefon */
+@media (max-width: 767.98px) {
+  .yok__ust {
+    /* 4 sütun: son sütunun ortası */
+    --x: calc((100% - 3 * var(--oluk)) / 4 * 3.5 + 3 * var(--oluk));
+    --ref-boy: clamp(3.5rem, 2rem + 8vw, 4.5rem);
+    padding-top: var(--s-6);
+    padding-right: calc(100% - var(--x) + var(--s-4));
+  }
+  .yok__adres { margin-bottom: var(--s-6); }
+  .yok__baslik { font-size: clamp(2.6rem, 1.6rem + 5vw, 3.25rem); }
+  .yok__metin { font-size: var(--t-md); }
+  .yok__tablo-bas { display: none; }
+  .yok__foyler { border-top: var(--cz) solid var(--cizgi-renk); }
+  .yok__foy {
+    grid-template-columns: 3rem minmax(0, 1fr);
+    grid-template-areas: "no menu" "no ad";
+    row-gap: 2px;
+    padding: 12px var(--s-2);
+  }
+  .yok__foy-no { grid-area: no; }
+  .yok__foy-menu { grid-area: menu; }
+  .yok__foy-ad { grid-area: ad; font-size: var(--t-sm); }
+  .yok__foy-tanim { display: none; }
+}

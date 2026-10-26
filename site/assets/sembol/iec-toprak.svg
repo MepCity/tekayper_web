@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" class="iec iec-toprak" data-sembol="toprak" data-tur="iec" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" font-family="Osifont, ISOCPEUR, Arial, sans-serif" overflow="visible">
+  <title>Koruma iletkeni (PE)</title>
+  <desc>IEC 60617 koruma topraklaması: toprak işareti daire içinde.</desc>
+  <path d="M24 0V24" data-sira="1" vector-effect="non-scaling-stroke"/>
+  <path d="M17 24H31" data-sira="2" vector-effect="non-scaling-stroke"/>
+  <path d="M19.5 28H28.5" data-sira="3" vector-effect="non-scaling-stroke"/>
+  <path d="M22 32H26" data-sira="4" vector-effect="non-scaling-stroke"/>
+  <path d="M24 18A10 10 0 1 1 24 38A10 10 0 1 1 24 18" data-sira="5" vector-effect="non-scaling-stroke"/>
+  <text class="uc-no" data-uc="ust" x="21" y="8" text-anchor="end" font-size="6" data-sira="9">PE</text>
+  <g class="baglantilar" stroke="none">
+    <circle class="baglanti" cx="24" cy="0" r="0" data-baglanti="ust" data-uc="ust"/>
+  </g>
+</svg>

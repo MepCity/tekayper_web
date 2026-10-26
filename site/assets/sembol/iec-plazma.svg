@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 48" width="64" height="48" class="iec iec-plazma" data-sembol="plazma" data-tur="iec" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" font-family="Osifont, ISOCPEUR, Arial, sans-serif" overflow="visible">
+  <title>Plazma kesim ünitesi (kara kutu)</title>
+  <desc>IEC piktogramı yok; kara kutu ve torç dış hattı.</desc>
+  <path d="M16 0V8" data-sira="1" vector-effect="non-scaling-stroke"/>
+  <path d="M8 8H56V40H8Z" data-sira="2" vector-effect="non-scaling-stroke"/>
+  <path d="M28 13H36V22H28Z" data-sira="3" vector-effect="non-scaling-stroke"/>
+  <path d="M29 22L31 31H33L35 22" data-sira="4" vector-effect="non-scaling-stroke"/>
+  <path d="M32.6 32.5L31 34.8L33.4 35.8L31.8 38" data-sira="5" vector-effect="non-scaling-stroke"/>
+  <g class="baglantilar" stroke="none">
+    <circle class="baglanti" cx="16" cy="0" r="0" data-baglanti="ust" data-uc="ust"/>
+  </g>
+</svg>

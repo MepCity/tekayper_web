@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" class="iec iec-termokupl" data-sembol="termokupl" data-tur="iec" data-kontrol="evet" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" font-family="Osifont, ISOCPEUR, Arial, sans-serif" overflow="visible">
+  <title>Termokupl</title>
+  <desc>İki farklı iletken birleşim noktasında birleşir; negatif kutup kalın çizgi. KONTROL: Termokupl: negatif kutbun kalın çizgiyle gösterimi ve + / - yerleşimi kontrol edilmeli.</desc>
+  <path d="M16 0V20L24 36" data-sira="1" vector-effect="non-scaling-stroke"/>
+  <path d="M32 0V20L24 36" data-sira="2" vector-effect="non-scaling-stroke" stroke-width="3"/>
+  <path class="dolgu" d="M24 34.2A1.8 1.8 0 1 1 24 37.8A1.8 1.8 0 1 1 24 34.2Z" fill="currentColor" stroke="none" data-sira="3"/>
+  <path d="M9.38 9H11.62M10.5 7.88V10.12" data-sira="4" vector-effect="non-scaling-stroke"/>
+  <path d="M36.52 9H38.48" data-sira="4" vector-effect="non-scaling-stroke"/>
+  <g class="baglantilar" stroke="none">
+    <circle class="baglanti" cx="16" cy="0" r="0" data-baglanti="ust" data-uc="arti"/>
+    <circle class="baglanti" cx="32" cy="0" r="0" data-baglanti="ust" data-uc="eksi"/>
+  </g>
+</svg>

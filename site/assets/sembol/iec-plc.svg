@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 48" width="64" height="48" class="iec iec-plc" data-sembol="plc" data-tur="iec" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" font-family="Osifont, ISOCPEUR, Arial, sans-serif" overflow="visible">
+  <title>PLC (kara kutu -A1)</title>
+  <desc>IEC'de PLC piktogramı yok; EPLAN kara kutu düzeni: dikdörtgen, üstte giriş, altta çıkış uçları.</desc>
+  <path d="M16 0V8" data-sira="1" vector-effect="non-scaling-stroke"/>
+  <path d="M24 0V8" data-sira="1" vector-effect="non-scaling-stroke"/>
+  <path d="M32 0V8" data-sira="1" vector-effect="non-scaling-stroke"/>
+  <path d="M40 0V8" data-sira="1" vector-effect="non-scaling-stroke"/>
+  <path d="M48 0V8" data-sira="1" vector-effect="non-scaling-stroke"/>
+  <path d="M8 8H56V40H8Z" data-sira="2" vector-effect="non-scaling-stroke"/>
+  <path d="M16 40V48" data-sira="3" vector-effect="non-scaling-stroke"/>
+  <path d="M24 40V48" data-sira="3" vector-effect="non-scaling-stroke"/>
+  <path d="M32 40V48" data-sira="3" vector-effect="non-scaling-stroke"/>
+  <path d="M40 40V48" data-sira="3" vector-effect="non-scaling-stroke"/>
+  <path d="M48 40V48" data-sira="3" vector-effect="non-scaling-stroke"/>
+  <path d="M23.83 27.5V20.5H26.63C27.8 20.5 28.5 21.32 28.5 22.37C28.5 23.42 27.8 24.23 26.63 24.23H23.83M30.02 20.5V27.5H33.98M40.17 21.78C39.7 20.97 38.88 20.5 37.83 20.5C36.43 20.5 35.5 22.02 35.5 24C35.5 25.98 36.43 27.5 37.83 27.5C38.88 27.5 39.7 27.03 40.17 26.22" data-sira="4" vector-effect="non-scaling-stroke"/>
+  <g class="baglantilar" stroke="none">
+    <circle class="baglanti" cx="16" cy="0" r="0" data-baglanti="ust" data-uc="ust1"/>
+    <circle class="baglanti" cx="16" cy="48" r="0" data-baglanti="alt" data-uc="alt1"/>
+    <circle class="baglanti" cx="24" cy="0" r="0" data-baglanti="ust" data-uc="ust2"/>
+    <circle class="baglanti" cx="24" cy="48" r="0" data-baglanti="alt" data-uc="alt2"/>
+    <circle class="baglanti" cx="32" cy="0" r="0" data-baglanti="ust" data-uc="ust3"/>
+    <circle class="baglanti" cx="32" cy="48" r="0" data-baglanti="alt" data-uc="alt3"/>
+    <circle class="baglanti" cx="40" cy="0" r="0" data-baglanti="ust" data-uc="ust4"/>
+    <circle class="baglanti" cx="40" cy="48" r="0" data-baglanti="alt" data-uc="alt4"/>
+    <circle class="baglanti" cx="48" cy="0" r="0" data-baglanti="ust" data-uc="ust5"/>
+    <circle class="baglanti" cx="48" cy="48" r="0" data-baglanti="alt" data-uc="alt5"/>
+  </g>
+</svg>

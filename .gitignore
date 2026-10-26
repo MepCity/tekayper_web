@@ -1,0 +1,21 @@
+.DS_Store
+**/.DS_Store
+node_modules/
+**/node_modules/
+
+# çalışma/kaynak klasörleri (depoya ve imaja girmez)
+_kaynak/
+_arastirma/
+_qa/
+_spec/
+_scrollcraft/
+.scrollcraft.json
+tools/qa/node_modules/
+
+# gizli ve çalışma zamanı verisi
+site/app/config.local.php
+site/storage/anahtar.txt
+site/storage/eposta-log.txt
+site/storage/talepler/*
+site/storage/hiz/*
+*.log

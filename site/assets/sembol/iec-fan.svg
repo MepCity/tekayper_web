@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" class="iec iec-fan" data-sembol="fan" data-tur="iec" data-kontrol="evet" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" font-family="Osifont, ISOCPEUR, Arial, sans-serif" overflow="visible">
+  <title>Fan / filtreli fan</title>
+  <desc>Daire içinde üç kanatlı pervane, yanında filtre paspası. KONTROL: Fan için IEC 60617 içindeki fan sembolüyle (pervane) karşılaştırılmalı; filtre gösterimi EPLAN alışkanlığı.</desc>
+  <path d="M20 0V12" data-sira="1" vector-effect="non-scaling-stroke"/>
+  <path d="M20 12A12 12 0 1 1 20 36A12 12 0 1 1 20 12" data-sira="2" vector-effect="non-scaling-stroke"/>
+  <path d="M20 24Q23.76 16.94 20 14Q18.15 18.29 20 24Z" data-sira="3" vector-effect="non-scaling-stroke"/>
+  <path d="M20 24Q24.24 30.78 28.66 29Q25.87 25.25 20 24Z" data-sira="3" vector-effect="non-scaling-stroke"/>
+  <path d="M20 24Q12 24.28 11.34 29Q15.99 28.46 20 24Z" data-sira="3" vector-effect="non-scaling-stroke"/>
+  <path d="M36 12H44V36H36Z" data-sira="4" vector-effect="non-scaling-stroke"/>
+  <path d="M36 15L44 19L36 23L44 27L36 31L44 35" data-sira="5" vector-effect="non-scaling-stroke"/>
+  <g class="baglantilar" stroke="none">
+    <circle class="baglanti" cx="20" cy="0" r="0" data-baglanti="ust" data-uc="ust"/>
+  </g>
+</svg>

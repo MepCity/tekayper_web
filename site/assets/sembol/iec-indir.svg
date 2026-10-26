@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" class="iec iec-indir" data-sembol="indir" data-tur="ui" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" font-family="Osifont, ISOCPEUR, Arial, sans-serif" overflow="visible">
+  <title>İndir</title>
+  <desc>İndirme: aşağı ok ve taban çizgisi.</desc>
+  <path d="M24 8V28" data-sira="1" vector-effect="non-scaling-stroke"/>
+  <path class="dolgu" d="M18.5 27H29.5L24 35Z" fill="currentColor" stroke="none" data-sira="2"/>
+  <path d="M12 40H36" data-sira="3" vector-effect="non-scaling-stroke"/>
+</svg>

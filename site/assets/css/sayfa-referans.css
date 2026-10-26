@@ -1,0 +1,376 @@
+/* Föy 6, Referans listesi (paket P6): bobin -K0, kontak aynası, A-Z dizini, NOT plakası. */
+
+/* Bu föyde sol cetvel bölüm harfleri yerine firma dizinini taşır (spec 3.6): F1 cetveli gizlenir, aynı yere dizin oturur. */
+.foy-govde--referans .cetvel--sol { display: none; }
+
+.foy--referans {
+  --ref-cizgi: var(--cz);
+  --ref-satir-sinir: var(--kil);
+}
+
+/* ---------------------------------------------------------------- A-Z dizini (sol cetvel bandı) */
+.dizin {
+  position: fixed;
+  z-index: var(--z-ust);
+  top: var(--c-ust);
+  bottom: var(--c-alt);
+  left: calc(var(--c-dis) + var(--cz-kalin));
+  width: var(--c-cetvel);
+}
+.dizin__liste {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.dizin__liste > li { flex: 1 1 0; display: flex; min-height: 0; }
+.dizin__liste > li + li { border-top: var(--cz-ince) solid var(--kil); }
+.dizin__harf {
+  position: relative;
+  isolation: isolate;
+  flex: 1;
+  display: grid;
+  place-items: center;
+  font-family: var(--f-cizim);
+  font-size: var(--t-xs);
+  line-height: 1;
+  letter-spacing: 0;
+  text-decoration: none;
+  color: color-mix(in srgb, var(--metin) 62%, var(--zemin));
+  transition: color var(--d-mikro) var(--e-ui);
+}
+/* ekranda görünen grupların harfi tam mürekkep */
+.dizin__harf.is-gorunur { color: var(--metin); }
+.dizin__harf.is-gorunur::after {
+  content: "";
+  position: absolute;
+  right: -1px;
+  top: 50%;
+  width: 4px;
+  height: var(--cz-kalin);
+  margin-top: -1px;
+  background: var(--metin);
+}
+/* grubun bütün kontakları kapandı: harf enerjili (fosforlu bant mürekkebin altında) */
+.dizin__harf::before {
+  content: "";
+  position: absolute;
+  left: 3px;
+  right: 3px;
+  top: 50%;
+  height: 0.95em;
+  margin-top: -0.5em;
+  background: var(--isaret);
+  mix-blend-mode: multiply;
+  z-index: -1;
+  transform: scaleY(0);
+  transition: transform var(--d-normal) var(--e-vurgu);
+}
+.dizin__harf.is-enerjili::before { transform: scaleY(1); }
+.dizin__harf:focus-visible { outline-offset: -2px; background: none; }
+@media (hover: hover) and (pointer: fine) {
+  .dizin__harf:hover { color: var(--metin); text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: 0.2em; }
+}
+
+/* ---------------------------------------------------------------- bobin -K0 (satır A) */
+.bobin {
+  position: relative;
+  grid-template-rows: auto;
+  align-items: stretch;
+}
+.bobin__cizim {
+  grid-column: 1 / span 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--metin);
+}
+.bobin__hat {
+  position: relative;
+  display: block;
+  width: 7px;
+  flex: none;
+}
+.bobin__hat::before,
+.bobin__hat::after { content: ""; position: absolute; top: 0; bottom: 0; left: 50%; }
+/* enerji bandı: mürekkebin altında, çizgi boyunca yukarıdan aşağı akar */
+.bobin__hat::before {
+  width: 7px;
+  margin-left: -3.5px;
+  background: var(--isaret);
+  mix-blend-mode: multiply;
+  transform-origin: 50% 0;
+  transform: scaleY(0);
+}
+.bobin__hat::after { width: var(--ref-cizgi); margin-left: calc(var(--ref-cizgi) / -2); background: var(--metin); }
+.bobin__hat.is-enerjili::before { transform: scaleY(1); transition: transform var(--hat-sure, 360ms) linear; }
+.bobin__hat--a1 { flex: 1 1 auto; min-height: 48px; }
+.bobin__hat--a2 { height: 32px; }
+
+.bobin__sembol { position: relative; flex: none; width: 192px; height: 192px; }
+.bobin__iec { display: block; color: var(--metin); }
+.bobin__iec .uc-no { fill: var(--metin); }
+.bobin__etiket {
+  position: absolute;
+  top: 74px;
+  right: calc(100% - 56px + 14px);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+  font-family: var(--f-cizim);
+  font-size: var(--t-not);
+  letter-spacing: 0;
+  line-height: 1;
+  white-space: nowrap;
+}
+.bobin__tag { font-size: 1.125rem; }
+@media (prefers-reduced-motion: no-preference) {
+  .js .bobin__etiket { animation: ref-harfle 260ms linear 420ms both; }
+}
+@keyframes ref-harfle { from { clip-path: inset(-0.3em 100% -0.3em -0.3em); } to { clip-path: inset(-0.3em -0.3em -0.3em -0.3em); } }
+
+.bobin__metin {
+  grid-column: 3 / -1;
+  align-self: center;
+  padding-block: clamp(48px, 9vh, 104px) clamp(40px, 6vh, 72px);
+}
+.bobin__baslik {
+  font-size: var(--t-display);
+  font-weight: 340;
+  line-height: 0.96;
+  letter-spacing: -0.025em;
+}
+.bobin__alt {
+  margin-top: var(--s-5);
+  max-width: 34ch;
+  font-size: var(--t-lg);
+  line-height: 1.35;
+  color: var(--metin-2);
+}
+
+/* ---------------------------------------------------------------- kontak aynası (satır B) */
+.kontaklar { padding-bottom: var(--bant-pad); }
+.ayna {
+  grid-column: 2 / 8;
+  /* sütun çizgileri cetvelin bölge sınırlarına (oluk ortası) oturur; bobinin A2 hattı aynanın sol kenarı olur */
+  margin-inline: calc(var(--oluk) / -2 - var(--ref-cizgi) / 2) calc(var(--oluk) / -2);
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-top: var(--ref-cizgi) solid var(--metin);
+  border-bottom: var(--ref-cizgi) solid var(--metin);
+}
+.ayna__kol {
+  min-width: 0;
+  padding: 0 calc(var(--oluk) / 2 + 4px) var(--s-7) calc(var(--oluk) / 2 + 12px);
+  border-left: var(--cz-ince) solid var(--metin);
+}
+.ayna__kol:first-child { border-left-width: var(--ref-cizgi); }
+.ayna__kol:last-child { border-right: var(--cz-ince) solid var(--metin); }
+
+.grup { scroll-margin-top: calc(var(--c-ust) + 8px); }
+.grup__harf {
+  display: flex;
+  align-items: flex-end;
+  padding-top: var(--s-6);
+  padding-bottom: var(--s-2);
+  border-bottom: var(--cz-ince) solid var(--metin);
+  font-size: var(--t-h2);
+  font-weight: 330;
+  line-height: 1;
+  letter-spacing: -0.01em;
+}
+.grup__harf:focus { outline: none; }
+.grup__harf-metin { padding-inline: 0.04em; }
+.grup__liste { margin: 0; padding: 0; list-style: none; }
+
+/* firma = bir kontak satırı: kontak (uç numaralarıyla), ad, logo; hepsi aynı etiket düzeninde */
+.firma {
+  position: relative;
+  display: grid;
+  gap: 10px;
+  padding: 20px 0 22px;
+  outline-offset: 2px;
+}
+.firma + .firma { border-top: var(--cz-ince) solid var(--ref-satir-sinir); }
+.firma__kontak, .plaka__kontak {
+  display: flex;
+  align-items: flex-end;
+  gap: 6px;
+  height: 32px;
+}
+.firma__uc {
+  position: relative;
+  isolation: isolate;
+  margin-bottom: 11px;
+  padding-inline: 2px;
+  font-family: var(--f-cizim);
+  font-size: var(--t-not);
+  line-height: 1;
+  letter-spacing: 0;
+  font-variant-numeric: tabular-nums;
+  background: linear-gradient(var(--isaret), var(--isaret)) 0 88% / 0% 0.5em no-repeat;
+  transition: background-size var(--d-normal) var(--e-vurgu) 120ms;
+}
+.kontak-cizim { display: block; flex: none; width: 96px; height: 32px; overflow: visible; color: var(--metin); }
+.kontak-cizim__bant {
+  stroke: var(--isaret);
+  stroke-width: 7px;
+  vector-effect: non-scaling-stroke;
+  mix-blend-mode: multiply;
+  transform-box: fill-box;
+  transform-origin: 0 50%;
+  transform: scaleX(0);
+  transition: transform var(--d-normal) var(--e-vurgu) 150ms;
+}
+.firma.is-kapali .kontak-cizim__bant { transform: scaleX(1); }
+.firma.is-kapali .firma__uc { background-size: 100% 0.5em; }
+.firma.is-anlik .kontak-cizim__bant, .firma.is-anlik .firma__uc { transition: none; }
+
+.firma__ad {
+  font-size: clamp(1.375rem, 1.05rem + 0.6vw, 1.75rem);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  overflow-wrap: anywhere;
+  justify-self: start;
+}
+.firma__logo { display: flex; align-items: center; height: 44px; }
+.firma__logo picture { display: block; max-width: 100%; }
+.firma__logo-img {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: min(100%, 220px);
+  max-height: 40px;
+  filter: grayscale(1) contrast(1.1);
+  mix-blend-mode: multiply;
+  transition: filter var(--d-mikro) var(--e-ui);
+}
+@media (hover: hover) and (pointer: fine) {
+  .firma:hover .firma__logo-img { filter: none; }
+}
+.firma:focus-visible .firma__logo-img { filter: none; }
+.firma:focus-visible { outline: 2px solid var(--odak); }
+
+/* son durum: JS yokken ve azaltılmış harekette bütün kontaklar kapalı, bantlar yerinde */
+.no-js .firma .kontak__bicak,
+[data-hareket="az"] .firma .kontak__bicak { transform: none; }
+.no-js .kontak-cizim__bant, [data-hareket="az"] .firma .kontak-cizim__bant { transform: scaleX(1); transition: none; }
+.no-js .firma__uc, [data-hareket="az"] .firma .firma__uc { background-size: 100% 0.5em; transition: none; }
+.no-js .bobin__hat::before, [data-hareket="az"] .bobin__hat::before { transform: scaleY(1); transition: none; }
+
+/* ---------------------------------------------------------------- NOT plakası (satır C) */
+.plaka {
+  position: relative;
+  display: grid;
+  justify-items: start;
+  gap: var(--s-4);
+  margin-top: var(--s-8);
+  padding: 40px 20px 20px;
+  border: var(--cz) solid var(--metin);
+  background: var(--zemin);
+  scroll-margin-top: calc(var(--c-ust) + 16px);
+}
+.plaka__etiket {
+  position: absolute;
+  top: 7px;
+  left: 8px;
+  font-family: var(--f-cizim);
+  font-size: var(--t-xs);
+  line-height: 1;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+.plaka__kontak { margin-top: 4px; }
+.plaka.is-kapali .kontak-cizim__bant { transform: scaleX(1); }
+.plaka.is-kapali .firma__uc { background-size: 100% 0.5em; }
+.plaka__metin { max-width: 30ch; font-size: var(--t-md); line-height: 1.45; }
+.plaka__dugme { margin-top: var(--s-2); }
+
+/* ---------------------------------------------------------------- dizüstü ve tablet */
+@media (max-width: 1279.98px) {
+  .ayna__kol { padding-left: calc(var(--oluk) / 2 + 8px); }
+  .kontak-cizim { width: 84px; height: 28px; }
+  .firma__kontak, .plaka__kontak { height: 28px; }
+  .firma__uc { margin-bottom: 9px; }
+}
+
+/* tablet: ayna tek sütun, bobin solda, başlık yanında */
+@media (max-width: 1023.98px) {
+  .bobin__cizim { grid-column: 1 / span 2; align-items: flex-start; padding-left: 0; }
+  .bobin__hat { margin-left: calc(48px - 3.5px); }
+  .bobin__sembol { margin-left: -48px; }
+  .bobin__etiket { right: auto; left: calc(136px + 14px); align-items: flex-start; }
+  .bobin__metin { grid-column: 3 / -1; }
+  .ayna {
+    grid-column: 1 / -1;
+    grid-template-columns: minmax(0, 1fr);
+    margin-inline: calc(48px - var(--ref-cizgi) / 2) 0;
+    border-right: var(--cz-ince) solid var(--metin);
+  }
+  .ayna__kol, .ayna__kol:first-child { border-left: var(--ref-cizgi) solid var(--metin); border-right: 0; padding-inline: 20px 16px; }
+  .ayna__kol + .ayna__kol { border-top: 0; }
+  .ayna__kol:last-child { border-right: 0; }
+  .firma {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: end;
+    column-gap: var(--s-5);
+  }
+  .firma__logo { justify-content: flex-end; }
+  .firma__logo-img { max-width: 160px; }
+}
+
+/* ---------------------------------------------------------------- telefon: dizin başlığın altında yatay şerit */
+@media (max-width: 767.98px) {
+  .dizin {
+    position: sticky;
+    top: var(--c-ust);
+    bottom: auto;
+    left: auto;
+    width: auto;
+    height: 44px;
+    background: var(--zemin);
+    border-bottom: var(--cz-ince) solid var(--metin);
+  }
+  .dizin__liste {
+    flex-direction: row;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+  }
+  .dizin__liste::-webkit-scrollbar { display: none; }
+  .dizin__liste > li { flex: 0 0 44px; }
+  .dizin__liste > li + li { border-top: 0; border-left: var(--cz-ince) solid var(--kil); }
+  .dizin__harf { font-size: var(--t-sm); }
+  .dizin__harf::before { left: 10px; right: 10px; }
+  .dizin__harf.is-gorunur::after { right: auto; left: 50%; top: auto; bottom: -1px; width: 16px; height: 2px; margin: 0 0 0 -8px; }
+  .grup, .plaka { scroll-margin-top: calc(var(--c-ust) + 44px + 8px); }
+
+  .bobin { row-gap: 0; }
+  /* telefon: başlık üstte, alt cümle bobinin yanında; ilk kontak ilk ekranda kalsın */
+  .bobin__metin { display: contents; }
+  .bobin__baslik { grid-column: 1 / -1; grid-row: 1; padding-block: var(--s-6) var(--s-3); font-size: clamp(2.75rem, 1.5rem + 7vw, 3.5rem); }
+  .bobin__alt { grid-column: 2 / -1; grid-row: 2; align-self: start; max-width: none; margin-top: 28px; font-size: var(--t-md); }
+  .bobin__cizim { grid-column: 1 / -1; grid-row: 2; }
+  .bobin__hat { margin-left: calc(36px - 3.5px); }
+  .bobin__hat--a1 { flex: none; height: 8px; min-height: 0; }
+  .bobin__hat--a2 { height: 16px; }
+  .bobin__sembol { margin-left: -60px; }
+  .bobin__etiket { top: 128px; left: calc(96px + 16px); }
+  .ayna { margin-inline: calc(36px - var(--ref-cizgi) / 2) 0; border-right: 0; }
+  .ayna__kol, .ayna__kol:first-child { padding-inline: 16px 0; }
+  /* telefon satırı: kontak ve logo aynı satırda, ad altında */
+  .firma { grid-template-columns: auto minmax(0, 1fr); align-items: end; column-gap: 12px; row-gap: 6px; padding-block: 16px 18px; }
+  .firma__kontak { grid-column: 1; grid-row: 1; }
+  .firma__logo { grid-column: 2; grid-row: 1; justify-content: flex-end; height: 32px; }
+  .firma__ad { grid-column: 1 / -1; grid-row: 2; }
+  .firma__logo-img { max-height: 30px; max-width: 100%; }
+  .kontak-cizim { width: 72px; height: 24px; }
+  .firma__kontak, .plaka__kontak { height: 24px; gap: 4px; }
+  .firma__uc { margin-bottom: 7px; }
+  .grup__harf { padding-top: var(--s-5); }
+  .plaka { margin-top: var(--s-6); padding-inline: 16px; }
+}

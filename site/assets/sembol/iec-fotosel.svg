@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 48" width="64" height="48" class="iec iec-fotosel" data-sembol="fotosel" data-tur="iec" data-kontrol="evet" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" font-family="Osifont, ISOCPEUR, Arial, sans-serif" overflow="visible">
+  <title>Fotosel (verici / alıcı)</title>
+  <desc>Verici ve alıcı blok, aralarında ışınım okları. KONTROL: Fotoelektrik sensör için verici/alıcı + ışınım oku gösterimi EPLAN alışkanlığı; onay gerekli.</desc>
+  <path d="M12 0V12" data-sira="1" vector-effect="non-scaling-stroke"/>
+  <path d="M4 12H20V36H4Z" data-sira="2" vector-effect="non-scaling-stroke"/>
+  <path d="M52 0V12" data-sira="3" vector-effect="non-scaling-stroke"/>
+  <path d="M44 12H60V36H44Z" data-sira="4" vector-effect="non-scaling-stroke"/>
+  <path d="M22 20H38" data-sira="5" vector-effect="non-scaling-stroke"/>
+  <path d="M22 28H38" data-sira="5" vector-effect="non-scaling-stroke"/>
+  <path class="dolgu" d="M42 20L36.5 17.8V22.2Z" fill="currentColor" stroke="none" data-sira="6"/>
+  <path class="dolgu" d="M42 28L36.5 25.8V30.2Z" fill="currentColor" stroke="none" data-sira="6"/>
+  <path d="M52 36V48" data-sira="7" vector-effect="non-scaling-stroke"/>
+  <g class="baglantilar" stroke="none">
+    <circle class="baglanti" cx="12" cy="0" r="0" data-baglanti="ust" data-uc="verici"/>
+    <circle class="baglanti" cx="52" cy="0" r="0" data-baglanti="ust" data-uc="alici"/>
+    <circle class="baglanti" cx="52" cy="48" r="0" data-baglanti="alt" data-uc="alt"/>
+  </g>
+</svg>

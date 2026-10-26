@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" class="iec iec-aydinlatma" data-sembol="aydinlatma" data-tur="iec" data-kontrol="evet" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" font-family="Osifont, ISOCPEUR, Arial, sans-serif" overflow="visible">
+  <title>Aydınlatma armatürü (lineer)</title>
+  <desc>Floresan/lineer armatür: uzun kalın çizgi ve uç çizgileri. KONTROL: Genel armatür (daire ve çarpı) yerine lineer armatür gösterimi seçildi; lamba sembolüyle karışmasın diye.</desc>
+  <path d="M24 0V24" data-sira="1" vector-effect="non-scaling-stroke"/>
+  <path d="M8 24H40" data-sira="2" vector-effect="non-scaling-stroke" stroke-width="3"/>
+  <path d="M8 18V30" data-sira="3" vector-effect="non-scaling-stroke"/>
+  <path d="M40 18V30" data-sira="3" vector-effect="non-scaling-stroke"/>
+  <g class="baglantilar" stroke="none">
+    <circle class="baglanti" cx="24" cy="0" r="0" data-baglanti="ust" data-uc="ust"/>
+  </g>
+</svg>

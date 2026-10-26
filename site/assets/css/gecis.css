@@ -1,0 +1,43 @@
+/* Föy çevirme: belgeler arası görünüm geçişi (spec 2.4).
+   Eski föy %6 sola kayıp 0,6'ya söner; yeni föy sağ kenardan yüksek gölgeyle gelir.
+   Çerçeve, başlık satırı ve föy etiketi yerinde kalır. Desteklemeyen tarayıcıda main kısa bir giriş yapar (gecis.js). */
+
+@view-transition { navigation: auto; }
+
+::view-transition-group(root) { animation-duration: var(--d-foy); animation-timing-function: var(--e-foy); }
+::view-transition-old(root) {
+  animation: foy-cik var(--d-foy) var(--e-foy) both;
+}
+::view-transition-new(root) {
+  animation: foy-gir var(--d-foy) var(--e-foy) both;
+  box-shadow: var(--g-yuksek), -1px 0 0 0 var(--murekkep);
+}
+@keyframes foy-cik { to { transform: translateX(-6%); opacity: 0.6; } }
+@keyframes foy-gir { from { transform: translateX(100%); } }
+
+/* sabit parçalar: yer değiştirmez, yalnızca içerik çapraz söner */
+::view-transition-group(cerceve),
+::view-transition-group(ust-satir),
+::view-transition-group(foy-etiketi),
+::view-transition-group(cetvel-sol) { animation-duration: var(--d-foy); animation-timing-function: var(--e-foy); }
+::view-transition-old(ust-satir), ::view-transition-new(ust-satir) { animation-duration: 200ms; }
+::view-transition-old(foy-etiketi), ::view-transition-new(foy-etiketi) { animation-duration: 260ms; height: 100%; object-fit: none; object-position: left center; }
+
+/* hat devamı: urunler.php'deki giden tel (hat-devam) bu föyde gelen "/3" kesme noktasına uçar */
+html[data-hat-devam] .kesme-noktasi--gelen[data-capraz="/3"] { view-transition-name: hat-devam; }
+::view-transition-group(hat-devam) { animation-duration: var(--d-foy); animation-timing-function: var(--e-foy); z-index: 2; }
+::view-transition-old(hat-devam), ::view-transition-new(hat-devam) { animation-duration: var(--d-foy); height: 100%; object-fit: none; object-position: left center; }
+
+/* azaltılmış hareket: 120 ms çapraz sönme */
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*), ::view-transition-old(*), ::view-transition-new(*) { animation-duration: 120ms !important; }
+  ::view-transition-old(root) { animation: gecis-son 120ms linear both; }
+  ::view-transition-new(root) { animation: gecis-gel 120ms linear both; box-shadow: none; }
+}
+@keyframes gecis-son { to { opacity: 0; } }
+@keyframes gecis-gel { from { opacity: 0; } }
+
+/* yedek giriş (görünüm geçişi olmayan tarayıcılar): gecis.js html'e .gecis-yedek ekler */
+.gecis-yedek main { animation: main-gir 320ms var(--e-ui) both; }
+@keyframes main-gir { from { transform: translateX(24px); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .gecis-yedek main { animation: gecis-gel 120ms linear both; } }

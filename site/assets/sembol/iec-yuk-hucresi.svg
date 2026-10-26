@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" class="iec iec-yuk-hucresi" data-sembol="yuk-hucresi" data-tur="iec" data-kontrol="evet" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="4" font-family="Osifont, ISOCPEUR, Arial, sans-serif" overflow="visible">
+  <title>Yük hücresi (tartım)</title>
+  <desc>Kutu içinde dört gerinim ölçerli Wheatstone köprüsü; besleme üst/alt, sinyal sol/sağ. KONTROL: Yük hücresi için köprü gösterimi kullanıldı; standart sembol yok.</desc>
+  <path d="M24 0V12" data-sira="1" vector-effect="non-scaling-stroke"/>
+  <path d="M24 36V48" data-sira="1" vector-effect="non-scaling-stroke"/>
+  <path d="M0 24H12" data-sira="1" vector-effect="non-scaling-stroke"/>
+  <path d="M36 24H48" data-sira="1" vector-effect="non-scaling-stroke"/>
+  <path d="M8 8H40V40H8Z" data-sira="2" vector-effect="non-scaling-stroke"/>
+  <path d="M24 12L27.88 15.88M32.12 20.12L36 24" data-sira="3" vector-effect="non-scaling-stroke"/>
+  <path d="M36 24L32.12 27.88M27.88 32.12L24 36" data-sira="3" vector-effect="non-scaling-stroke"/>
+  <path d="M24 36L20.12 32.12M15.88 27.88L12 24" data-sira="3" vector-effect="non-scaling-stroke"/>
+  <path d="M12 24L15.88 20.12M20.12 15.88L24 12" data-sira="3" vector-effect="non-scaling-stroke"/>
+  <path d="M28.8 14.96L33.04 19.2L31.2 21.04L26.96 16.8Z" data-sira="4" vector-effect="non-scaling-stroke"/>
+  <path d="M33.04 28.8L28.8 33.04L26.96 31.2L31.2 26.96Z" data-sira="4" vector-effect="non-scaling-stroke"/>
+  <path d="M19.2 33.04L14.96 28.8L16.8 26.96L21.04 31.2Z" data-sira="4" vector-effect="non-scaling-stroke"/>
+  <path d="M14.96 19.2L19.2 14.96L21.04 16.8L16.8 21.04Z" data-sira="4" vector-effect="non-scaling-stroke"/>
+  <g class="baglantilar" stroke="none">
+    <circle class="baglanti" cx="24" cy="0" r="0" data-baglanti="ust" data-uc="ust"/>
+    <circle class="baglanti" cx="24" cy="48" r="0" data-baglanti="alt" data-uc="alt"/>
+    <circle class="baglanti" cx="0" cy="24" r="0" data-baglanti="sol" data-uc="sol"/>
+    <circle class="baglanti" cx="48" cy="24" r="0" data-baglanti="sag" data-uc="sag"/>
+  </g>
+</svg>
